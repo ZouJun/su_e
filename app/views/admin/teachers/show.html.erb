@@ -1,0 +1,32 @@
+<div class="su-ui">
+  <su-form>
+
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.t_number" %>'
+            readonly value="<%= @teacher.t_number %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.t_name" %>'
+            readonly value="<%= @teacher.t_name %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.t_password" %>'
+            readonly value="<%= @teacher.t_password %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.academy" %>'
+            readonly value="<%= @teacher.academy %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.major" %>'
+            readonly value="<%= @teacher.major %>"></su-input>
+            <su-input type="number" label='<%= t "activerecord.attributes.teacher.age" %>'
+            readonly value="<%= @teacher.age %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.sex" %>'
+            readonly value="<%= @teacher.sex %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.email" %>'
+            readonly value="<%= @teacher.email %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.address" %>'
+            readonly value="<%= @teacher.address %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.telephone" %>'
+            readonly value="<%= @teacher.telephone %>"></su-input>
+            <su-input type="number" label='<%= t "activerecord.attributes.teacher.t_power" %>'
+            readonly value="<%= @teacher.t_power %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.teacher.ip" %>'
+            readonly value="<%= @teacher.ip %>"></su-input>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_teacher_path, model: @teacher} %>
+    </div>
+  </su-form>
+</div>

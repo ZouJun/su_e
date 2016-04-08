@@ -1,0 +1,25 @@
+<div id="admin_documents">
+  <p>
+    <a href="<%= new_admin_document_path %>" class="btn btn-success btn-sm">
+      <su-icon icon="plus" color="#fff" fix-width></su-icon>新增
+    </a>
+  </p>
+  <%= grid(@documents, show_filters: :when_filtered) do |g|
+    #g.action_column param_name: :select_ids, object_property: :id
+    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
+            g.column name: "#{t 'activerecord.attributes.document.d_title'}", attribute: 'd_title'
+            g.column name: "#{t 'activerecord.attributes.document.d_content'}", attribute: 'd_content'
+            g.column name: "#{t 'activerecord.attributes.document.d_type'}", attribute: 'd_type'
+            g.column name: "#{t 'activerecord.attributes.document.d_tags'}", attribute: 'd_tags'
+            g.column name: "#{t 'activerecord.attributes.document.annex'}", attribute: 'annex'
+
+    g.column do |c|
+      grid_operator(:admin_document_path, c.id)
+    end
+  end %>
+</div>
+<script type="text/javascript" data-turbolinks-eval="true">
+  new Vue({
+    el: "#admin_documents"
+  })
+</script>

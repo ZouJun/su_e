@@ -1,0 +1,13 @@
+<% options ||= {} %>
+<% _options = {do_continue: false}.merge(options) %>
+<div class="col-md-offset-3 col-md-9">
+  <su-button color="info" type="submit" icon="check"><%= t 'common.submit' %></su-button>
+  <% if(_options[:do_continue]) %>
+  <su-button color="primary" type="submit" icon="check" name="submit_continue"><%= t 'common.submit_and_continue' %></su-button>
+  <% end %>
+
+  <a class="btn" href="javascript:history.back()">
+    <su-icon icon="undo" fix-width></su-icon>
+    <%= "#{t 'common.back'}#{t 'common.list'}" %>
+  </a>
+</div>

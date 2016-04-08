@@ -1,0 +1,19 @@
+<div class="su-ui">
+  <su-form>
+
+    <su-input type="text" label='<%= t "activerecord.attributes.role.name" %>'
+              readonly value="<%= @role.name %>"></su-input>
+    <su-input type="number" label='<%= t "activerecord.attributes.role.position" %>'
+              readonly value="<%= @role.position %>"></su-input>
+
+    <su-select label='<%= t "activerecord.attributes.role.permissions" %>' multiple readonly
+                :value="<%= @role.permissions.ids %> ">
+      <% Permission.all.each do |permission| %>
+          <option value="<%= permission.id %>"><%= permission.description %></option>
+      <% end %>
+    </su-select>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_role_path, model: @role} %>
+    </div>
+  </su-form>
+</div>

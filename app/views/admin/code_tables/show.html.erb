@@ -1,0 +1,20 @@
+<div class="su-ui">
+  <su-form>
+
+            <su-input type="text" label='<%= t "activerecord.attributes.code_table.name" %>'
+            readonly value="<%= @code_table.name %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.code_table.code" %>'
+            readonly value="<%= @code_table.code %>"></su-input>
+            <su-select label='<%= t "activerecord.attributes.code_table.parent" %>'
+            readonly value="<%= @code_table.parent.name if @code_table.parent_id.present? %>"></su-select>
+            <su-text label='<%= t "activerecord.attributes.code_table.default_value" %>' readonly><%= @code_table.default_value %></su-text>
+            <su-input-datetime label='<%= t "activerecord.attributes.code_table.deleted_at" %>'
+            readonly value="<%= @code_table.deleted_at %>"></su-input-datetime>
+            <su-options type="checkbox" label='<%= t "activerecord.attributes.code_table.is_public" %>' readonly value="<%= @code_table.is_public %>">
+              <su-option value="true"></su-option>
+            </su-options>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_code_table_path, model: @code_table} %>
+    </div>
+  </su-form>
+</div>

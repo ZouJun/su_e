@@ -1,0 +1,686 @@
+<div id="demo">
+  <su-widget>
+    <su-widget-header title="表单组件" flat>
+      <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+    </su-widget-header>
+    <su-widget-body>
+      <div class="row">
+        <div class="col-xs-offset-3 col-xs-7 ">
+          <su-code lang="html">
+            <su-form v-pre :init-fields="{字典类型, 生成固有字段,如:{'_method':'put'}}" action="{字符串,提交目标地址}" method="{提交方式,post or get}" :before-submit="{提交前回调函数,返回false则终止提交}"></su-form>
+          </su-code>
+        </div>
+      </div>
+
+      <su-form>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="html">
+              <su-input v-pre label="输入框" name="input" placeholder="这是placeholder" simple="{极简模式, 只需要属性名, 也只有input标签}">
+                <span slot="help">这是帮助提示</span>
+              </su-input>
+            </su-code>
+          </div>
+        </div>
+        <su-input label="输入框" name="input" placeholder="这是placeholder">
+          <span slot="help">这是帮助提示</span>
+        </su-input>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="html">disabled</su-code>
+          </div>
+        </div>
+        <su-input label="禁用输入框" name="input_disabled" disabled placeholder="这是禁用输入框">
+          <span slot="help">这是禁用输入框</span>
+        </su-input>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="js">readonly</su-code>
+          </div>
+        </div>
+        <su-input label="只读输入框" name="input_readonly" readonly placeholder="这是只读输入框">
+          <span slot="help">这是只读输入框</span>
+        </su-input>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="html">
+              <su-select v-pre name="select1" label="下拉菜单" value="option2" no-blank="{只需要属性名,禁止空选项}">
+                <option value="option1">选项1</option>
+                <option value="option2">选项2</option>
+              </su-select>
+            </su-code>
+          </div>
+        </div>
+        <su-select name="select1" label="下拉菜单" value="option2">
+          <option value="option1">选项1</option>
+          <option value="option2">选项2</option>
+        </su-select>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="html">
+              <su-select v-pre remote-url="{远程url}" remote-label-filed="{值的字段,默认是: 'name'}" :remote-data="{对象, 查询时的}" {other}="其他字段不变"></su-select>
+            </su-code>
+
+            <su-code lang="json">
+              ! 目前无法设置默认值以及固有项目
+              提交参数:
+              q: string, 查询字符串
+              期望结果:
+              { items:[{id: {要提交的value}, name: {显示的label, 字段名可以通过remote-label-filed配置}} ...], total_count: {整数, 总条数} }
+            </su-code>
+          </div>
+        </div>
+        <su-select name="select1" remote-url="/guide/select-remote.json" label="下拉菜单远程数据">
+          <option value="123" selected="selected">李大爷</option>
+        </su-select>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="js">multiple</su-code>
+          </div>
+        </div>
+        <su-select name="select2" label="多选下拉菜单" multiple value="option1">
+          <option value="option1">选项1</option>
+          <option value="option2">选项2</option>
+        </su-select>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code class="html">
+              <su-input-datetime v-pre label="日期和时间" placeholder="可以选择日期和时间: 2016-01-1 00:00:00" name="dt"></su-input-datetime>
+            </su-code>
+          </div>
+        </div>
+        <su-input-datetime label="日期和时间" placeholder="可以选择日期和时间: 2016-01-1 00:00:00" name="dt"></su-input-datetime>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="js">type="time"</su-code>
+          </div>
+        </div>
+        <su-input-datetime label="时间" name="time" placeholder="只选择时间: 00:00:00" type="time"></su-input-datetime>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="js">type="date"</su-code>
+          </div>
+        </div>
+        <su-input-datetime label="日期" name="date" placeholder="只选择日期: 2016-01-1" type="date"></su-input-datetime>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="html">
+              <su-options v-pre type="checkbox" label="多选" name="options" for="options" value="option1,option2">
+                <su-option value="option1" uncheck-value="{非选中时的默认值}">选项一</su-option>
+                <su-option value="option2">选项二</su-option>
+                <su-option value="option3">选项三</su-option>
+              </su-options>
+            </su-code>
+          </div>
+        </div>
+        <su-options type="checkbox" label="多选" name="options" for="options" value="option1,option2">
+          <su-option value="option1">选项一</su-option>
+          <su-option value="option2">选项二</su-option>
+          <su-option value="option3">选项三</su-option>
+        </su-options>
+
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="html"><!-- 添加vertical属性,可以让选项垂直排列. -->
+              <su-options type="radio" v-pre label="单选" name="option" for="option" vertical value="option2">
+                <su-option value="option1">选项一</su-option>
+                <su-option value="option2">选项二</su-option>
+              </su-options>
+            </su-code>
+          </div>
+        </div>
+        <su-options type="radio" label="单选" name="option" for="option" vertical value="option2">
+          <su-option value="option1">选项一</su-option>
+          <su-option value="option2">选项二</su-option>
+        </su-options>
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-7 ">
+            <su-code lang="html"><!-- 如果有autosize插件,会自动使用. -->
+              <su-text v-pre label="多行文本" name="text">多行文本的值</su-text>
+            </su-code>
+          </div>
+        </div>
+        <su-text label="多行文本" name="text">多行文本的值</su-text>
+
+        <form-hoz-row>
+          <su-code lang="html">
+            <su-file v-pre 基本字段="{同su-input}" :allow-ext="{允许的后缀名,['exe','jpg']}" :deny-ext="{禁止的后缀名,[]}" :allow-mime="{允许的类型,['image/jpg', 'image/jpeg']}" :deny-mime="{禁止的类型}"></su-file>
+          </su-code>
+        </form-hoz-row>
+        <su-file name="file" label="上传文件" :deny-ext="['cer']"></su-file>
+
+
+        <form-hoz-row>
+          <su-code lang="html">
+            <su-content label="显示内容" v-pre no-border="{只需要属性名, 不显示边框}" padding="{内容的边距, 默认5px}" min-height="{最小高度, 默认100px}"></su-content>
+          </su-code>
+        </form-hoz-row>
+        <su-content label="显示内容">
+          <su-img src="http://img0.imgtn.bdimg.com/it/u=4168762024,1922499492&fm=206&gp=0.jpg" width="200" height="200" border="circle"></su-img>
+        </su-content>
+        <!--<div class="row">-->
+        <!--<div class="col-xs-offset-3 col-xs-7 ">-->
+        <!--<pre><code class="js"><su-editor label="编辑器" name="editor"></su-editor></code></pre>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<su-editor label="编辑器" name="editor">编辑器的值</su-editor>-->
+        <div class="clearfix form-actions">
+          <div class="col-md-offset-3 col-md-9">
+            <su-button color="info" type="submit" icon="check">提交</su-button>
+
+            &nbsp; &nbsp; &nbsp;
+            <su-button type="reset" icon="undo">重置</su-button>
+          </div>
+        </div>
+      </su-form>
+    </su-widget-body>
+  </su-widget>
+
+  <su-widget>
+    <su-widget-header title="表单验证" flat>
+      <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+    </su-widget-header>
+    <su-widget-body>
+      <h3 class="header smaller lighter blue">
+        使用方法
+        <small></small>
+      </h3>
+
+      使用方法：
+      <su-code lang="html">
+        <xxx :validators="{可以是数组，也可以是字典}" v-pre></xxx>
+      </su-code>
+      数组，任何不需要传值的验证器都可以直接写名字：
+      <su-code lang="html">
+        <xxx :validators="['html','domain',...]" v-pre></xxx>
+      </su-code>
+      字典，任何不需要传值的验证器在对象中，设置true就可以了：
+      <su-code lang="html">
+        <xxx :validators="{minlength:5, maxlength:8, number: true}" v-pre></xxx>
+      </su-code>
+      自定义错误信息，如果需要传值，则将值写在rule属性里：
+      <su-code lang="html">
+        <xxx :validators="{password: '密码都输错啦！', html: {message: '有没有学过HTML啊！'}, max: {rule: 100, message:'只能输入100个字符啦！！'}}" v-pre></xxx>
+      </su-code>
+
+      <h3 class="header smaller lighter blue">
+        可用验证类型
+        <small></small>
+      </h3>
+
+      <p>
+        <b>电子邮件： <code>email</code></b></p>
+
+      <p><b>整数：<code>digital</code></b></p>
+
+      <p><b>数字：<code>number</code></b></p>
+
+      <p><b>域名：<code>domain</code></b></p>
+
+      <p><b>HTML：<code>html</code></b></p>
+
+      <p><b>URL：<code>url</code></b></p>
+
+      <p><b>IP地址：<code>ip</code></b></p>
+
+      <p><b>中国大陆身份证：<code>identification</code></b></p>
+
+      <p><b>手机号码：<code>phone</code></b></p>
+
+      <p><b>车牌号：<code>licenseNumber</code></b></p>
+
+      <p><b>账号：<code>account</code></b>，由英文，数字，下划线组成</p>
+
+      <p><b>密码强校验：<code>hardPassword</code></b>，由8位以上由数字/大写字母/小写字母/标点符号组成的混合密码</p>
+
+      <p><b>日期：<code>datetime</code></b>，yyyy-MM-dd HH:mm:ss</p>
+
+      <p><b>日期：<code>date</code></b>，yyyy-MM-dd</p>
+
+      <p><b>正则表达式：<code>pattern</code></b>，传入时应该用对象的方法，如：
+        <code>:validators="{pattern:{rule: '.+', message: '至少一个字符'}}"</code>
+      </p>
+
+      <p>
+        <b>最小长度：<code>minlength</code></b>，需要传入参数：<code>:validators="{minlength:5, minlength:{rule:5,
+        message:'5个字符亲！'}}"</code>
+      </p>
+
+      <p><b>最大长度：<code>maxlength</code></b>，如上</p>
+
+      <p><b>数字最小值：<code>min</code></b>，如上</p>
+
+      <p><b>数字最大值：<code>max</code></b>，如上</p>
+    </su-widget-body>
+  </su-widget>
+
+  <style>
+    #buttonlabel button {
+      margin: 2px 0;
+    }
+  </style>
+
+  <su-widget id="buttonlabel">
+    <su-widget-header title="按钮和标签" flat>
+      <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+    </su-widget-header>
+    <su-widget-body>
+
+      <su-code lang="html">
+        <su-button v-pre>默认按钮</su-button>
+      </su-code>
+
+      <su-button>默认按钮</su-button>
+      <br>
+      <br>
+
+      <h3 class="header smaller lighter blue">
+        有颜色的按钮
+        <small>通过设置 color 属性来改变按钮的主题色</small>
+      </h3>
+      <su-code lang="html">
+        <su-button v-pre color="{颜色的值}">按钮文本</su-button>
+      </su-code>
+      <su-button color="primary">color="primary"</su-button>
+      <su-button color="info">color="info"</su-button>
+      <su-button color="success">color="success"</su-button>
+      <su-button color="warning">color="warning"</su-button>
+      <su-button color="danger">color="danger"</su-button>
+      <su-button color="inverse">color="inverse"</su-button>
+      <su-button color="pink">color="pink"</su-button>
+      <su-button color="purple">color="purple"</su-button>
+      <su-button color="yellow">color="yellow"</su-button>
+      <su-button color="grey">color="grey"</su-button>
+      <su-button color="light">color="light"</su-button>
+      <su-button color="link">color="link"</su-button>
+
+      <br>
+      <br>
+
+      <h3 class="header smaller lighter blue">
+        白色主题
+        <small>通过设置 theme="white"</small>
+      </h3>
+      <su-code lang="html">
+        <su-button v-pre theme="white">按钮文本</su-button>
+      </su-code>
+      <p>
+        <su-button color="primary" theme="white">color="primary" theme="white"</su-button>
+        <su-button color="info" theme="white">color="info" theme="white"</su-button>
+        <su-button color="success" theme="white">color="success" theme="white"</su-button>
+        <su-button color="warning" theme="white">color="warning" theme="white"</su-button>
+        <i class="fa fa-ellipsis-h"></i>
+      </p>
+      <br>
+      <br>
+      <h5 class="lighter">白色主题也有粗边框样式
+        <small>通过添加bold属性</small>
+      </h5>
+      <su-code lang="html">
+        <su-button v-pre bold="{只需要属性名，放白色主题的按钮加粗下边栏}">按钮文本</su-button>
+      </su-code>
+      <p>
+        <su-button color="primary" theme="white" bold>color="primary" theme="white" bold</su-button>
+        <su-button color="danger" theme="white" bold>color="danger" theme="white" bold</su-button>
+        <i class="fa fa-ellipsis-h"></i>
+      </p>
+
+
+      <br>
+      <br>
+
+      <h3 class="header smaller lighter blue">
+        圆角 & 大小
+        <small>圆角通过添加属性round完成, 大小则设置size属性: minier, xs, sm, lg, xlg</small>
+      </h3>
+
+      <su-code lang="html">
+        <su-button v-pre round="{只需要属性名，使按钮圆角}">按钮文本</su-button>
+      </su-code>
+      <p>
+        <su-button color="primary" round>color="primary" round</su-button>
+
+        <su-button color="success" theme="white" round>color="success" theme="white" round</su-button>
+
+        <i class="fa fa-ellipsis-h"></i>
+      </p>
+      <su-code lang="html">
+        <su-button v-pre size="{尺寸的值}">按钮文本</su-button>
+      </su-code>
+      <p>
+        <su-button color="primary" size="minier">color="primary" size="minier"</su-button>
+        <su-button color="warning" size="xs">color="warning" size="xs"</su-button>
+        <su-button color="info" size="sm">color="info" size="sm"</su-button>
+        <su-button color="danger" size="lg">color="danger" size="lg"</su-button>
+        <su-button color="pink" size="xlg">color="pink" size="xlg"</su-button>
+      </p>
+      <p>
+        <su-button color="primary" theme="white" size="minier">color="primary" size="minier"</su-button>
+        <su-button color="warning" theme="white" size="xs" round>color="warning" size="xs" round</su-button>
+        <su-button color="info" theme="white" size="sm">color="info" size="sm"</su-button>
+        <su-button color="danger" theme="white" size="lg" round>color="danger" size="lg" round</su-button>
+        <su-button color="pink" theme="white" size="xlg">color="pink" size="xlg"</su-button>
+      </p>
+
+      <br>
+      <br>
+
+      <h3 class="header smaller lighter blue">
+        块状按钮
+        <small>通过添加属性block设置</small>
+      </h3>
+
+      <su-code lang="html">
+        <su-button v-pre block="{只需要属性名，设置按钮成块状}">按钮文本</su-button>
+      </su-code>
+      <su-button color="primary" theme="white" size="minier" block round>color="primary" theme="white" size="minier"
+        block
+        round
+      </su-button>
+      <su-button color="warning" size="xs" block>color="warning" size="xs" block</su-button>
+      <su-button color="info" theme="white" size="sm" block>color="info" theme="white" size="sm" block</su-button>
+      <su-button color="danger" size="lg" block round>color="danger" size="lg" block round</su-button>
+      <su-button color="pink" theme="white" size="xlg" block bold>color="pink" theme="white" size="xlg" block bold
+      </su-button>
+    </su-widget-body>
+  </su-widget>
+
+  <su-widget>
+    <su-widget-header title="标签 & 图片" flat>
+      <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+    </su-widget-header>
+    <su-widget-body>
+      <h3 class="header smaller lighter blue">
+        标签
+        <small>su-label， 左右开角，自定义内外</small>
+      </h3>
+      <su-code lang="html">
+        <su-label v-pre color="{颜色}" size="sm|lg|xlg" arrow-left="none|in|out" arrow-right="none|in|out">文本</su-label>
+      </su-code>
+      <su-label>标签</su-label>
+      <su-label color="primary">color="primary"</su-label>
+      <su-label arrow-left="out" color="info">arrow-left="out" color="info"</su-label>
+      <su-label arrow-left="in" arrow-right="out" color="danger">arrow-left="in" arrow-right="out" color="danger"
+      </su-label>
+      <su-label icon="user" color="success" size="xlg" arrow-right="in"> icon="user" color="success" size="xlg"
+        arrow-right="in"
+      </su-label>
+
+      <h3 class="header smaller lighter blue">
+        图片
+        <small>su-img， 具有自适应，按比例拉伸，保持原有大小， 保持原有比例等特点</small>
+      </h3>
+
+      <su-code lang="html">
+        <su-img v-pre src="{...}" width="{宽度}" height="{高度}" x="{x轴偏移量}" y="{y轴偏移量}" border="{rounded|circle|thumbnail}" fill-type="{cover|contain|full}"></su-img>
+      </su-code>
+      <su-img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2861120398,70263261&fm=80" width="200" height="200" border="thumbnail"></su-img>
+      <su-img src="http://img0.imgtn.bdimg.com/it/u=4168762024,1922499492&fm=206&gp=0.jpg" width="200" height="200" border="circle"></su-img>
+      <su-img src="http://img4.imgtn.bdimg.com/it/u=3340999208,2685406284&fm=206&gp=0.jpg" width="200" height="200" border="thumbnail"></su-img>
+      <su-img src="http://img1.imgtn.bdimg.com/it/u=4195373660,2820978459&fm=206&gp=0.jpg" width="200" height="200" border="rounded" fill-type="cover"></su-img>
+      <su-img src="http://img4.imgtn.bdimg.com/it/u=1816708377,3592068407&fm=206&gp=0.jpg" width="200" height="200" border="thumbnail" fill-type="contain"></su-img>
+      <su-img src="http://img4.imgtn.bdimg.com/it/u=1888007526,3671418650&fm=21&gp=0.jpg" width="200" height="200" border="thumbnail" fill-type="full"></su-img>
+    </su-widget-body>
+  </su-widget>
+
+  <su-widget>
+    <su-widget-header title="面板归类" flat>
+      <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+    </su-widget-header>
+    <su-widget-body>
+      <h3 class="header smaller lighter blue">
+        手风琴
+        <small>su-accordion & su-accordion-pannel</small>
+      </h3>
+      <su-code lang="html">
+        <su-accordion v-pre>
+          <su-accordion-pannel title="标题" open="{只需要属性名，默认打开}">内容</su-accordion-pannel>
+        </su-accordion>
+      </su-code>
+      <su-accordion>
+        <su-accordion-pannel title="面板1" open>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </su-accordion-pannel>
+        <su-accordion-pannel title="面板2">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </su-accordion-pannel>
+        <su-accordion-pannel title="面板3">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </su-accordion-pannel>
+      </su-accordion>
+
+      <su-code lang="html">
+        <su-accordion v-pre type2="{只需要属性名，变个样式}">..</su-accordion>
+      </su-code>
+      <su-accordion type2>
+        <su-accordion-pannel title="面板1">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </su-accordion-pannel>
+        <su-accordion-pannel title="面板2" open>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </su-accordion-pannel>
+        <su-accordion-pannel title="面板3">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </su-accordion-pannel>
+      </su-accordion>
+
+      <h3 class="header smaller lighter blue">
+        标签组
+        <small>su-tabs & su-tab</small>
+      </h3>
+
+      <su-code lang="html">
+        <su-tabs v-pre title-position="{below|left|right}" title-color="{各种颜色，同按钮的颜色}" title-back-color="{各种颜色，同按钮的颜色}">
+          <su-tab title="标签1" open="{只需要属性名，默认打开}">内容1</su-tab>
+          <su-tab title="标签2">内容2</su-tab>
+          <su-tab title="标签3">内容3</su-tab>
+        </su-tabs>
+      </su-code>
+      <su-tabs title-position="below" title-color="blue" title-back-color="blue">
+        <su-tab title="标签1" open>内容1</su-tab>
+        <su-tab title="标签2">内容2</su-tab>
+        <su-tab title="标签3">内容3</su-tab>
+      </su-tabs>
+
+    </su-widget-body>
+  </su-widget>
+
+  <su-widget>
+    <su-widget-header title="杂项" flat>
+      <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+    </su-widget-header>
+    <su-widget-body>
+      <h3 class="header smaller lighter blue">
+        面包屑
+        <small>su-breadcrumbs，根据数据生成路径</small>
+      </h3>
+      <su-code lang="html">
+        <su-breadcrumbs v-pre :data="{传入的是对象，通过Vue的语法传入引用类型，或则传入Vue的实例名}"></su-breadcrumbs>
+      </su-code>
+      <su-breadcrumbs :data="[{title:'第一个', src:'#'},{title:'第二个', src:'#'},{title:'第三个', src:'#'},{title:'当前', src:'#'}]"></su-breadcrumbs>
+      <br><br>
+
+      <h3 class="header smaller lighter blue">
+        图标
+        <small>su-icon，使用的是fontawesome的图标字体</small>
+      </h3>
+      <su-code lang="html">
+        <su-icon v-pre icon="{图标的名字，如：user|cog|list|...}" size="{尺寸, lg|2x|3x|4x|5x}" fix-width="{只需要属性名，统一图标的宽度}" spin="{只需要属性名，让图标转起来}" color="{ace和bootstrap定义的颜色，当然可以用v-su-color}"></su-icon>
+      </su-code>
+      <su-icon icon="user" fix-width></su-icon>
+      &nbsp;&nbsp;&nbsp;
+      <su-icon icon="cog" size="lg" fix-width color="blue"></su-icon>
+      &nbsp;&nbsp;&nbsp;
+      <su-icon icon="spinner" size="2x" fix-width color="red" spin></su-icon>
+      &nbsp;&nbsp;&nbsp;
+      <su-icon icon="star" size="3x" fix-width color="green"></su-icon>
+      &nbsp;&nbsp;&nbsp;
+      <su-icon icon="tasks" size="4x" fix-width color="purple"></su-icon>
+      &nbsp;&nbsp;&nbsp;
+      <su-icon icon="trash" size="5x" fix-width color="orange"></su-icon>
+      &nbsp;&nbsp;&nbsp;
+      ...
+      <br><br>
+
+      <h3 class="header smaller lighter blue">
+        高亮代码块
+        <small>su-code，依赖highlighjs，支付多种语言</small>
+      </h3>
+      <su-code lang="html">
+        <su-code v-pre lang="{设置变成语言的名字，如：js|html|java|ruby|csharp}"></su-code>
+      </su-code>
+      <p>
+        javascript:
+      </p>
+      <su-code lang="js">
+        Vue.component('su-code', {
+        props: {
+        lang: String
+        },
+        methods: {
+        htmlEncode: function (str) {
+        var div = document.createElement("div");
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+        }
+        },
+        ready: function () {
+        $(this.$els.dom).addClass(this.lang).html(this.htmlEncode($(this.$els.source).html()));
+        if (typeof hljs != 'undefined')
+        hljs.highlightBlock($(this.$els.dom)[0]);
+        },
+        template: `
+        <div class="hidden" v-el:source>
+          <slot></slot>
+        </div>
+        <pre><code v-el:dom></code></pre>
+        `
+        });
+      </su-code>
+      <p>
+        ruby:
+      </p>
+      <su-code lang="ruby"> # Set up gems listed in the Gemfile.
+        ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
+        require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
+      </su-code>
+    </su-widget-body>
+  </su-widget>
+
+  <su-widget>
+    <su-widget-header title="指令" flat>
+      <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+    </su-widget-header>
+    <su-widget-body>
+      <h3 class="header smaller lighter blue">
+        工具提示
+        <small>v-su-tip， 自定义颜色，提示位置，不挑标签类型</small>
+      </h3>
+      <su-code lang="html">
+        <xxx v-pre v-su-tip="{提示语}" tip-color="{success|warning|info|error}" tip-position="{left|bottom|right|top}">左方</xxx>
+      </su-code>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <su-button color="primary" v-su-tip="天干物燥、小心火烛" tip-color="success" tip-position="left">一个按钮</su-button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span v-su-color="orange" v-su-tip="人不为己天诛地灭" tip-color="warning" tip-position="bottom">一段话....</span>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <su-icon icon="cog" color="green" size="5x" v-su-tip="今朝有酒今朝醉" tip-color="info" tip-position="right"></su-icon>
+      一个图标
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <su-label color="danger" v-su-tip="烽火连三月，家书抵万金" tip-color="error" tip-position="top" arrow-left="in" arrow-right="out">一个标签</su-label>
+
+      <h3 class="header smaller lighter blue">
+        文本或icon前景色，字体大小
+        <small>v-su-color| v-su-font-size, 自动按值设置， 丰富语意</small>
+      </h3>
+      <p>
+        <su-code lang="html">
+          <xxx v-pre v-su-color="{颜色的值，name|RGB|RGBa|HEX|HSLA}"></xxx>
+        </su-code>
+        <su-code lang="html">
+          <xxx v-pre v-su-font-size="{字体大小，自带单位，如：24px}"></xxx>
+        </su-code>
+        <span v-su-color="red" v-su-font-size="24px">{red}</span>&nbsp;
+        <span v-su-color="orange" v-su-font-size="24px">{orange}</span>&nbsp;
+        <span v-su-color="yellow" v-su-font-size="24px">{yellow}</span>&nbsp;
+        <span v-su-color="green" v-su-font-size="24px">{green}</span>&nbsp;
+        <span v-su-color="blue" v-su-font-size="24px">{blue}</span>&nbsp;
+        <span v-su-color="indigo" v-su-font-size="24px">{indigo}</span>&nbsp;
+        <span v-su-color="purple" v-su-font-size="24px">{purple}</span>&nbsp;
+        <span v-su-color="#444" v-su-font-size="24px">{#444}</span>&nbsp;
+        <span v-su-color="#888" v-su-font-size="24px">{#888}</span>&nbsp;
+        <span v-su-color="#aaa" v-su-font-size="24px">{#aaa}</span>&nbsp;
+        <span v-su-color="rgba(255,0,0,0.5)" v-su-font-size="24px">{rgba(255,0,0,0.5)}</span>&nbsp;
+        <span v-su-color="hsla(93, 89%, 45%, 0.85098)" v-su-font-size="24px">{hsla(93, 89%, 45%, 0.85098)}</span>&nbsp;
+        <span v-su-color="rgb(32, 195, 208)" v-su-font-size="24px">{rgb(32, 195, 208)}</span>&nbsp;
+      </p>
+    </su-widget-body>
+  </su-widget>
+
+
+  <div id="grid_demo">
+    <su-widget>
+      <su-widget-header title="表格" flat>
+        <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+      </su-widget-header>
+      <su-widget-body>
+        <su-grid :data.sync="data" multiple-select id="demo-grid">
+          <column label="列名" field="name">
+            <i class="fa fa-user"></i> $value
+          </column>
+          <column label="列名2" field="name2"></column>
+          <column label="列名3" field="name3"></column>
+        </su-grid>
+      </su-widget-body>
+    </su-widget>
+  </div>
+
+  <su-widget>
+    <su-widget-header title="流程设计器" flat>
+      <su-widget-toolbar slot="toolbar" collapse fullscreen close></su-widget-toolbar>
+    </su-widget-header>
+    <su-widget-body>
+      <su-form target="_blank" async-callback>
+        <su-process-designer>
+        </su-process-designer>
+      </su-form>
+    </su-widget-body>
+  </su-widget>
+</div>
+<script type="text/javascript" data-turbolinks-eval="true">
+  $('pre code').each(function (i, block) {
+//    hljs.highlightBlock(block);
+  });
+
+  new Vue({
+    el: "#demo",
+    data: {
+      data: [{name: '数据1', name2: '数据2', name3: '数据3'}, {name: '数据1', name2: '数据2', name3: '数据3'}, {
+        name: '数据1',
+        name2: '数据2',
+        name3: '数据3'
+      }]
+    },
+    beforeCompile: function () {
+//      console.log($(this.$el).html())
+    }
+  })
+</script>

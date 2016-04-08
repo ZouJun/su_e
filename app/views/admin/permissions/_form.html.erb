@@ -1,0 +1,36 @@
+<su-form action="<%= form_path([:admin, @permission]) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @permission %>">
+
+  <%= form_validate @permission %>
+  <su-input type="text" label='<%= t "activerecord.attributes.permission.description" %>' autofocus required
+            name="permission[description]" value="<%= @permission.description %>">
+    <span slot="help"><code>一句话描述</code></span>
+  </su-input>
+  <su-input type="text" label='<%= t "activerecord.attributes.permission.action" %>' required placeholder="对对象操作的谓词"
+            name="permission[action]" value="<%= @permission.action %>">
+    <span slot="help">如<code>:read</code>, <code>:destroy</code>, <code>:update</code>, <code>:manage</code></span>
+  </su-input>
+  <su-input type="text" label='<%= t "activerecord.attributes.permission.subject" %>' required placeholder="程序的Model名"
+            name="permission[subject]" value="<%= @permission.subject %>">
+    <span slot="help">如 <code>User</code>, <code>Teacher</code></span>
+  </su-input>
+  <su-input type="text" label='<%= t "activerecord.attributes.permission.fetching" %>' placeholder='作为筛选的条件'
+            name="permission[fetching]" value="<%= @permission.fetching %>">
+    <span slot="help">如 <code>["priority < ?", 3]</code>、<code>Model.where(:attribute => value)</code></span>
+  </su-input>
+  <su-text type="text" label='<%= t "activerecord.attributes.permission.code" %>' placeholder="ruby代码"
+           name="permission[code]"><%= @permission.code %></su-text>
+  <su-input type="number" label='<%= t "activerecord.attributes.permission.position" %>' name="permission[position]" value="<%= @permission.position %>"></su-input>
+  <su-select label='<%= t "activerecord.attributes.permission.group" %>' name="permission[group_id]" value="<%= @permission.group_id %>">
+    <% CodeTable.all.each do |item| %>
+        <option value="<%= item.id %>"><%= item.name %></option>
+    <% end %>
+  </su-select>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions' %>
+  </div>
+</su-form>

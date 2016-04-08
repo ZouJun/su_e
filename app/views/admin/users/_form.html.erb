@@ -1,0 +1,28 @@
+<su-form action="<%= form_path([:admin, @user]) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @user %>">
+
+  <%= form_validate @user %>
+  <su-input type="text" label="<%= t "activerecord.attributes.user.name" %>"
+            name="user[name]" value="<%= @user.name %>"></su-input>
+  <su-input type="text" label="<%= t "activerecord.attributes.user.phone" %>"
+            name="user[phone]" value="<%= @user.phone %>"></su-input>
+  <su-input type="text" label="<%= t "activerecord.attributes.user.email" %>"
+            name="user[email]" value="<%= @user.email %>"></su-input>
+  <su-input type="password" label="<%= t "activerecord.attributes.user.password" %>"
+            name="user[password]" value="<%= @user.password %>"></su-input>
+  <su-input type="text" label="<%= t "activerecord.attributes.user.identification" %>"
+            name="user[identification]" value="<%= @user.identification %>"></su-input>
+  <su-options type="radio" label="性别" name="user[sex]" value="<%= @user.sex %>">
+    <su-option value="1">男</su-option>
+    <su-option value="0">女</su-option>
+  </su-options>
+  <su-text label="<%= t "activerecord.attributes.user.remark" %>"
+           name="user[remark]"><%= @user.remark %></su-text>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions' %>
+  </div>
+</su-form>

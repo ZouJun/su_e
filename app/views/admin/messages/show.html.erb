@@ -1,0 +1,16 @@
+<div class="su-ui">
+  <su-form>
+
+            <su-input type="text" label='<%= t "activerecord.attributes.message.m_title" %>'
+            readonly value="<%= @message.m_title %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.message.m_content" %>'
+            readonly value="<%= @message.m_content %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.message.n_type" %>'
+            readonly value="<%= @message.n_type %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.message.m_tags" %>'
+            readonly value="<%= @message.m_tags %>"></su-input>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_message_path, model: @message} %>
+    </div>
+  </su-form>
+</div>

@@ -1,0 +1,20 @@
+<div class="su-ui">
+  <su-form>
+
+            <su-input type="text" label='<%= t "activerecord.attributes.notice.n_title" %>'
+            readonly value="<%= @notice.n_title %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.notice.n_content" %>'
+            readonly value="<%= @notice.n_content %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.notice.unit" %>'
+            readonly value="<%= @notice.unit %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.notice.n_type" %>'
+            readonly value="<%= @notice.n_type %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.notice.n_tags" %>'
+            readonly value="<%= @notice.n_tags %>"></su-input>
+            <su-input type="number" label='<%= t "activerecord.attributes.notice.views" %>'
+            readonly value="<%= @notice.views %>"></su-input>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_notice_path, model: @notice} %>
+    </div>
+  </su-form>
+</div>

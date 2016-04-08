@@ -1,0 +1,300 @@
+zh-CN:
+  activerecord:
+    models:
+      user: 用户
+      code_table: 码表
+      role: 角色
+      permission: 权限
+      organization: 机构
+      attachment: 附件
+      car: 车辆
+      law_record: 违章
+      get_license_plate: 新关注用户
+      laminator: 众筹用户
+      xp_error: 错误管理
+      temp_query_log: 临时用户记录
+      client_user: 违章查询接口账户
+      student: 学生
+      teacher: 教师
+      notice: 公告
+      message: 留言
+      grade: 成绩
+      document: 文档
+    attributes:
+      defaults:
+        id: 编号
+        created_at: 创建时间
+        date: 时间
+        position: 排序
+        file: 文件
+        select_file: 选择文件
+        remark: 备注
+        license_plate: 车牌号
+        vin: 车架号
+      laminator:
+        admin_title: 众筹用户
+        name: 微信ID
+        phone: 电话
+        status: 支付状态
+        serial_no: 订单编号
+        money: 金额
+      client_user:
+        admin_title: 违章查询接口用户
+        account: 帐号
+        password: 密码
+        name: 账户所有者
+        query_type: 查询权限
+        query_count: 查询次数
+        balance: 账户余额
+      xp_error:
+        admin_title: 错误管理
+        message: message
+        backtrace: backtrace
+        user_id: user_id
+        ip: ip
+        source: source
+      temp_query_log:
+        admin_title: 临时用户列表
+        license_plate: 车牌号
+        vin_simple: 车架号
+        source: 用户来源
+        query_date: 查询时间
+        status: 状态
+        contact_date: 联系时间
+        contact_content: 联系内容
+        operator: 联系人
+        remark: 备注
+      car:
+        admin_title: 车辆管理
+        user: 用户姓名
+        owner: 车主姓名
+        owner_phone: 车主电话
+        vin: 车架号
+        vin_simple: 车架号后6位
+        license_plate: 车牌号
+        verification: 是否验证
+        remark: 备注
+        has_detail_info: 车辆详细
+      get_license_plate:
+        admin_title: 新关注用户管理
+        weixin_opend_id: 用户OpendID
+        license_plate: 车牌号
+        status_complete: 所处状态
+      law_record:
+        admin_title: 违章列表
+        license_plate: 车牌号
+        vin: 车架号
+        vin_simple: 车架号后6位
+        car_type: 车辆类型
+        car_type: 车辆类型
+        status: 状态
+        updated_at: 查询完成时间
+        total_count: 违章次数
+        total_score: 总扣分
+        total_fee: 罚款金额
+        last_record_date: 最后违章时间
+        remark: 备注
+      violation_order:
+        admin_title: 违章e处理订单
+        serial_no: 订单号
+        user_id: 对应用户
+        type: 订单类型
+        license_plate: 车牌号
+        vin_simple: 车架号
+        owner_name: 车主姓名
+        owner_phone: 车主联系方式
+        need_pay: 是否需要支付
+        status: 订单状态
+        canceled_at: 取消时间
+        completed_at: 完成时间
+        deleted_at: 删除时间
+        need_refund: 是否需要退款
+        refund_at: 退款时间
+        details_count: 订单明细数量
+        success_count: 明细成功数量
+        failure_count: 明细失败数量
+        visit_back_at: 回访时间
+        handled_at: 处理完成时间
+        remark: 备注
+      inspect_order:
+        admin_title: 年审订单
+      ticket_order:
+        admin_title: 快速缴费订单
+
+      order_fee:
+        cost_fee_1: 应缴罚款
+        cost_fee_2: 应缴滞纳金
+        cost_fee_3: 应缴费用3金额
+        cost_fee_4: 应缴费用4金额
+        cost_fee_5: 应缴费用5金额
+        agency_fee: 代理费
+        poundage_fee: 应缴移动支付手续费
+        other_fee: 应缴其他费用
+        total_fee: 应缴总金额
+        net_pay_amount: 网络已支付费用
+        net_poundage_amou: nt网络已支付手续费
+        net_pay_at: 网络支付时间
+        other_pay_amount: 其他已支付费用
+        need_refund: 是否需要退款
+        refund_amount: 实际退款金额
+        refund_at: 退款时间
+        remark: 备注
+        user_pay_type: 用户希望支付方式
+        cash_payment_at: 已线下支付时间
+      sms:
+        admin_title: 短信模板
+
+      role:
+        admin_title: 角色管理
+        name: 角色名称
+        description: 角色描述
+        permissions: 拥有权限
+        position: 排序
+      permission:
+        description: 描述
+        group_id: 码表id
+        group: 码表
+        position: 排序
+        admin_title: 权限管理
+        action: 操作
+        subject: 对象
+        code: 代码
+        fetching: 对象筛选条件
+      attachment:
+        admin_title: 附件管理
+        name: 附件名称
+        author: 作者
+        position: 排序
+        data_type: 附件类型
+        avatar: 附件文件
+      code_table:
+        admin_title: 码表管理
+        name: 名称
+        code: 编号
+        parent: 上级码表
+        remark: 备注
+        position: 排序
+        default_value: 默认值
+      user:
+        admin_title: 人员管理
+        roles: 已有角色
+        name: 姓名
+        phone: 电话
+        email: 邮件
+        identification: 身份证
+        sex: 性别
+        current_password: 旧密码
+        password: 密码
+        password_confirmation: 确认密码
+        remark: 备注
+        organization: 所属机构
+      user_bill:
+        admin_title: 用户账单
+        user: 用户
+        io_type: 账单类型
+        bill_type: 项目
+        before_record: 处理前
+        change_record: 数量
+        after_record: 处理后
+        content: 具体事项
+        relation_id: 关联id
+        created_at: 操作时间
+      organization:
+        admin_title: 机构管理
+        name: 机构名称
+        parent: 上级机构
+        position: 排序
+        remark: 备注
+      contacts_group:
+        name: 组名
+        organization: 所属机构
+        parent: 上级分组
+        position: 排序
+        remark: 备注
+      contact:
+        code: 编号
+        name: 姓名
+        birthday: 生日
+        gender: 性别
+        organization: 所属机构
+        contacts_group: 所属分组
+        position: 排序
+        phone: 电话
+        qq: QQ
+        email: Email
+        remark: 备注
+        input: 导入
+      student:
+        code: "学号"
+        name: "姓名"
+        admin_title: "学生管理"
+        gender: "性别"
+        s_number: "学号"
+        s_name: "姓名"
+        academy: "所属学院"
+        major: "专业"
+        sex: "性别"
+        address: "地址"
+        telephone: "联系方式"
+        ip: "登录IP"
+        s_passowrd: "登录密码"
+        age: "年龄"
+        email: "邮箱"
+        s_power: "权限等级"
+      teacher:
+        t_number: "教师编号"
+        t_name: "姓名"
+        admin_title: "教师管理"
+        t_password: "密码"
+        academy: "所属学院"
+        major: "所属专业"
+        age: "年龄"
+        sex: "性别"
+        email: "邮箱"
+        address: "地址"
+        telephone: "联系方式"
+        t_power: "权限等级"
+        ip: "IP地址"
+      notice:
+        n_title: "公告标题"
+        n_content: "公告内容"
+        admin_title: "公告管理"
+        unit: "公告单位"
+        n_type: "公告类型"
+        n_tags: "公告标签"
+        views: "浏览次数"
+      message:
+        m_title: "留言标题"
+        m_content: "留言内容"
+        admin_title: "留言管理"
+        n_type: "留言类型"
+        m_tags: "留言标签"
+      grade:
+        score: "成绩"
+        admin_title: "成绩管理"
+        verify: "是否审核"
+      document:
+        d_title: "文档标题"
+        d_content: "文档内容"
+        admin_title: "文档管理"
+        d_type: "文档类型"
+        d_tags: "文档标签"
+        annex: "附件"
+  title:
+      statistics:
+        menu: 统计报表
+        person: 个人统计报表
+        year: 年报表
+        month: 月报表
+  contacts:
+      menu: 通讯录
+      contacts: 通讯录管理
+      group: 通讯录分组
+      content: 联系人信息
+  users:
+      menu: 系统管理
+      user_info: 个人信息
+      update_password: 修改密码
+      wallet: 我的钱包
+      bill: 我的账单
+      bill_detail: 账单明细

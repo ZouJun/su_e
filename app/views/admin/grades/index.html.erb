@@ -1,0 +1,22 @@
+<div id="admin_grades">
+  <p>
+    <a href="<%= new_admin_grade_path %>" class="btn btn-success btn-sm">
+      <su-icon icon="plus" color="#fff" fix-width></su-icon>新增
+    </a>
+  </p>
+  <%= grid(@grades, show_filters: :when_filtered) do |g|
+    #g.action_column param_name: :select_ids, object_property: :id
+    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
+            g.column name: "#{t 'activerecord.attributes.grade.score'}", attribute: 'score'
+            g.column name: "#{t 'activerecord.attributes.grade.verify'}", attribute: 'verify'
+
+    g.column do |c|
+      grid_operator(:admin_grade_path, c.id)
+    end
+  end %>
+</div>
+<script type="text/javascript" data-turbolinks-eval="true">
+  new Vue({
+    el: "#admin_grades"
+  })
+</script>

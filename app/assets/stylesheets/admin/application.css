@@ -1,0 +1,29 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require ace/bootstrap.min
+ *= require ace/ace.min
+ *= require ace/ace-skins.min
+ *= require ace/ace-fonts.min
+ *= require ace/select2.min
+ *= require ace/ace-part2.min
+ *= require ace/font-awesome.min
+ *= require ace/bootstrap-datetimepicker.min
+ *= require wice_grid
+ *# require highlightjs/styles/github
+ *= require_tree .
+ *= require_self
+ */
+html.turbolinks-progress-bar::before {
+    background-color: red !important;
+    height: 5px !important;
+}

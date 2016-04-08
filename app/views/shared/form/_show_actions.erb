@@ -1,0 +1,21 @@
+<% options ||= {} %>
+<% _options = {do_edit: true, do_delete: true}.merge(options) %>
+<div class="col-md-offset-3 col-md-9">
+  <%- if (_options[:do_edit]) -%>
+      <%= link_to send("edit_#{path}", model.id), title: "#{t 'common.edit'}", class: [:btn, 'btn-warning'] do
+        "<su-icon icon='pencil' class='bigger-120' fix-width></su-icon> #{t 'common.edit'}".html_safe
+      end %>
+  <%- end -%>
+
+  <%- if (_options[:do_delete]) -%>
+      <%= link_to send(path, model.id), method: :delete, title: "#{t 'common.delete'}", class: [:btn, 'btn-danger'], data: {confirm: "#{t 'common.confirm_delete'}"} do
+        "<su-icon icon='trash' class='bigger-120' fix-width></su-icon> #{t 'common.delete'}".html_safe
+      end %>
+  <%- end -%>
+
+
+  <a class="btn" href="javascript:history.back()">
+    <su-icon icon="undo" fix-width></su-icon>
+    返回
+  </a>
+</div>

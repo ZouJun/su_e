@@ -1,0 +1,17 @@
+<%= content_for :header do %>
+    <h1>
+      <%= "#{t 'common.create'}#{t "activerecord.models.notice"}".html_safe %>
+
+      <% if @breadcrumbs and @breadcrumbs[-2] %>
+          <small>
+            <i class="ace-icon fa fa-angle-double-left fa-fw"></i>
+            <a href="<%= @breadcrumbs[-2][:src] %>" v-su-color="#888">
+              <%= @breadcrumbs[-2][:title].html_safe %>
+            </a>
+          </small>
+      <% end %>
+    </h1>
+<% end %>
+<div class="su-ui">
+  <%= render 'form' %>
+</div>

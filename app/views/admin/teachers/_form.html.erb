@@ -1,0 +1,24 @@
+<su-form action="<%= form_path([:admin, @teacher]) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @teacher %>">
+
+  <%= form_validate @teacher %>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.t_number" %>' autofocus          name="teacher[t_number]" value="<%= @teacher.t_number %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.t_name" %>'           name="teacher[t_name]" value="<%= @teacher.t_name %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.t_password" %>'           name="teacher[t_password]" value="<%= @teacher.t_password %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.academy" %>'           name="teacher[academy]" value="<%= @teacher.academy %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.major" %>'           name="teacher[major]" value="<%= @teacher.major %>"></su-input>
+      <su-input type="number" label='<%= t "activerecord.attributes.teacher.age" %>'           name="teacher[age]" value="<%= @teacher.age %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.sex" %>'           name="teacher[sex]" value="<%= @teacher.sex %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.email" %>'           name="teacher[email]" value="<%= @teacher.email %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.address" %>'           name="teacher[address]" value="<%= @teacher.address %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.telephone" %>'           name="teacher[telephone]" value="<%= @teacher.telephone %>"></su-input>
+      <su-input type="number" label='<%= t "activerecord.attributes.teacher.t_power" %>'           name="teacher[t_power]" value="<%= @teacher.t_power %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.teacher.ip" %>'           name="teacher[ip]" value="<%= @teacher.ip %>"></su-input>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>
+  </div>
+</su-form>

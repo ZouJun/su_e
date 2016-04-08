@@ -1,0 +1,23 @@
+<su-form action="<%= form_path([:admin, @code_table]) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @code_table %>">
+
+  <%= form_validate @code_table %>
+  <su-input type="text" label='<%= t "activerecord.attributes.code_table.name" %>' required autofocus name="code_table[name]" value="<%= @code_table.name %>"></su-input>
+  <su-input type="text" label='<%= t "activerecord.attributes.code_table.code" %>' name="code_table[code]" value="<%= @code_table.code %>"></su-input>
+  <su-select label='<%= t "activerecord.attributes.code_table.parent" %>' name="code_table[parent_id]" value="<%= @code_table.parent_id %>">
+    <% CodeTable.all.each do |ct| %>
+        <option value="<%= ct.id %>"><%= ct.name %></option>
+    <% end %>
+  </su-select>
+  <su-text label='<%= t "activerecord.attributes.code_table.default_value" %>' name="code_table[default_value]"><%= @code_table.default_value %></su-text>
+  <su-options type="checkbox" label='<%= t "activerecord.attributes.code_table.is_public" %>' name="code_table[is_public]" value="<%= @code_table.is_public %>">
+    <su-option value="true" uncheck-value="false"></su-option>
+  </su-options>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions' %>
+  </div>
+</su-form>

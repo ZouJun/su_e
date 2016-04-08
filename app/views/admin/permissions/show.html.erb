@@ -1,0 +1,22 @@
+<div class="su-ui">
+  <su-form>
+
+            <su-input type="text" label='<%= t "activerecord.attributes.permission.description" %>'
+            readonly value="<%= @permission.description %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.permission.action" %>'
+            readonly value="<%= @permission.action %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.permission.subject" %>'
+            readonly value="<%= @permission.subject %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.permission.fetching" %>'
+            readonly value="<%= @permission.fetching %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.permission.code" %>'
+            readonly value="<%= @permission.code %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.permission.position" %>'
+            readonly value="<%= @permission.position %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.permission.group" %>'
+                      readonly value="<%= @permission.group.name if @permission.group_id.present? %>"></su-input>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_permission_path, model: @permission} %>
+    </div>
+  </su-form>
+</div>

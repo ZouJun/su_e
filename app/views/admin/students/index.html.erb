@@ -1,0 +1,32 @@
+<div id="admin_students">
+  <p>
+    <a href="<%= new_admin_student_path %>" class="btn btn-success btn-sm">
+      <su-icon icon="plus" color="#fff" fix-width></su-icon>新增
+    </a>
+  </p>
+  <%= grid(@students, show_filters: :when_filtered) do |g|
+    #g.action_column param_name: :select_ids, object_property: :id
+    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
+            g.column name: "#{t 'activerecord.attributes.student.s_number'}", attribute: 's_number'
+            g.column name: "#{t 'activerecord.attributes.student.s_name'}", attribute: 's_name'
+            # g.column name: "#{t 'activerecord.attributes.student.s_passowrd'}", attribute: 's_passowrd'
+            g.column name: "#{t 'activerecord.attributes.student.academy'}", attribute: 'academy'
+            g.column name: "#{t 'activerecord.attributes.student.major'}", attribute: 'major'
+            # g.column name: "#{t 'activerecord.attributes.student.age'}", attribute: 'age'
+            g.column name: "#{t 'activerecord.attributes.student.sex'}", attribute: 'sex'
+            g.column name: "#{t 'activerecord.attributes.student.email'}", attribute: 'email'
+            g.column name: "#{t 'activerecord.attributes.student.address'}", attribute: 'address'
+            g.column name: "#{t 'activerecord.attributes.student.telephone'}", attribute: 'telephone'
+            g.column name: "#{t 'activerecord.attributes.student.s_power'}", attribute: 's_power'
+            g.column name: "#{t 'activerecord.attributes.student.ip'}", attribute: 'ip'
+
+    g.column do |c|
+      grid_operator(:admin_student_path, c.id)
+    end
+  end %>
+</div>
+<script type="text/javascript" data-turbolinks-eval="true">
+  new Vue({
+    el: "#admin_students"
+  })
+</script>

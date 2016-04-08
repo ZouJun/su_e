@@ -1,0 +1,31 @@
+<div id="admin_code_tables">
+  <p>
+    <a href="<%= new_admin_code_table_path %>" class="btn btn-success btn-sm">
+      <su-icon icon="plus" color="#fff" fix-width></su-icon>
+      新增
+    </a>
+  </p>
+  <%= grid(@code_tables, show_filters: :when_filtered) do |g|
+    #g.action_column param_name: :select_ids, object_property: :id
+    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
+    g.column name: "#{t 'activerecord.attributes.code_table.name'}", attribute: 'name' do |c|
+      link_to c.name, admin_code_table_path(c.id), class: :pjax
+    end
+    g.column name: "#{t 'activerecord.attributes.code_table.code'}", attribute: 'code'
+    g.column name: "#{t 'activerecord.attributes.code_table.parent'}", assoc: :parent, attribute: 'name' do |c|
+      c.parent.name if c.parent_id.present?
+    end
+    g.column name: "#{t 'activerecord.attributes.code_table.default_value'}", attribute: 'default_value'
+
+    g.column do |c|
+      grid_operator(:admin_code_table_path, c.id) if c.is_public
+    end
+  end %>
+</div>
+<script type="text/javascript" data-turbolinks-eval="true">
+  new Vue({
+    el: "#admin_code_tables",
+    beforeCompile: function () {
+    }
+  })
+</script>

@@ -1,0 +1,37 @@
+<div id="<%= plural_table_name %>">
+  <p>
+    <a href="<%%= new_<%= singular_table_name %>_path %>" class="btn btn-success btn-sm">
+      <su-icon icon="plus" color="#fff" fix-width></su-icon>新增
+    </a>
+  </p>
+  <%%= grid(@<%= plural_file_name %>, show_filters: :when_filtered) do |g|
+    #g.action_column param_name: :select_ids, object_property: :id
+    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
+    <%- attributes.each do |attribute| -%>
+        <%- if attribute.name == 'name' -%>
+            g.column name: "#{t 'activerecord.attributes.<%= file_name %>.<%= attribute.name %>'}", attribute: '<%= attribute.name %>' do |c|
+              link_to c.name, <%= singular_table_name %>_path(c.id), class: :pjax
+            end
+        <%- elsif attribute.type == :references or attribute.type == :reference-%>
+            g.column name: "#{t 'activerecord.attributes.<%= file_name %>.<%= attribute.name %>'}", assoc: :<%= attribute.name %>, attribute: 'name' do |c|
+              c.<%= attribute.name %>.name if c.<%= attribute.name %>_id.present?
+            end
+        <%- elsif attribute.type == :date or attribute.type == :time-%>
+            g.column name: "#{t 'activerecord.attributes.<%= file_name %>.<%= attribute.name %>'}", attribute: '<%= attribute.name %>' do |c|
+              (l c.<%= attribute.name %>, format: :simple) if c.<%= attribute.name %>.present?
+            end
+        <%- else -%>
+            g.column name: "#{t 'activerecord.attributes.<%= file_name %>.<%= attribute.name %>'}", attribute: '<%= attribute.name %>'
+        <%- end -%>
+    <%- end -%>
+
+    g.column do |c|
+      grid_operator(:<%= singular_table_name %>_path, c.id)
+    end
+  end %>
+</div>
+<script type="text/javascript" data-turbolinks-eval="true">
+  new Vue({
+    el: "#<%= plural_table_name %>"
+  })
+</script>

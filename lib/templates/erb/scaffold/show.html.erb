@@ -1,0 +1,34 @@
+<div class="su-ui">
+  <su-form>
+
+    <%- attributes.each do |attribute| -%>
+        <%- name = "#{file_name}[#{attribute.name}]" -%>
+        <%- case attribute.type
+              when :date -%>
+            <su-input-datetime label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>'
+            readonly type="date" value="<%%= @<%= file_name %>.<%=attribute.name%> %>"></su-input-datetime>
+        <%- when :datetime -%>
+            <su-input-datetime label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>'
+            readonly value="<%%= @<%= file_name %>.<%=attribute.name%> %>"></su-input-datetime>
+        <%- when :text -%>
+            <su-text label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>' readonly><%%= @<%= file_name %>.<%=attribute.name%> %></su-text>
+        <%- when :integer, :float, :decimal -%>
+            <su-input type="number" label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>'
+            readonly value="<%%= @<%= file_name %>.<%=attribute.name%> %>"></su-input>
+        <%- when :reference, :references -%>
+            <su-input type="text" label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>'
+                      readonly value="<%%= @<%= file_name %>.<%=attribute.name %>.name if @<%= file_name %>.<%=attribute.name %>_id.present? %>"></su-input>
+        <%- when :boolean -%>
+            <su-options type="checkbox" label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>' readonly value="<%%= @<%= file_name %>.<%=attribute.name%> %>">
+              <su-option value="true"></su-option>
+            </su-options>
+        <%- else -%>
+            <su-input type="text" label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>'
+            readonly value="<%%= @<%= file_name %>.<%=attribute.name%> %>"></su-input>
+        <%- end -%>
+    <%- end -%>
+    <div class="clearfix form-actions">
+      <%%= render partial: 'shared/form/show_actions', locals: {path: :<%= singular_table_name %>_path, model: @<%= file_name %>} %>
+    </div>
+  </su-form>
+</div>

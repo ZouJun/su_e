@@ -1,0 +1,18 @@
+<%= content_for :header do %>
+    <h1>
+      <%= "#{t 'common.edit'}「#{@message.name}」" %>
+
+      <% if @breadcrumbs and @breadcrumbs[-3] %>
+          <small>
+            <i class="ace-icon fa fa-angle-double-left fa-fw"></i>
+            <a href="<%= @breadcrumbs[-3][:src] %>" v-su-color="#888">
+              <%= @breadcrumbs[-3][:title] %>
+            </a>
+          </small>
+      <% end %>
+    </h1>
+<% end %>
+
+<div class="su-ui">
+  <%= render 'form' %>
+</div>

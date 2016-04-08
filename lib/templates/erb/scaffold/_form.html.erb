@@ -1,0 +1,44 @@
+<%- namespace = controller_class_name.include?('::') -%>
+<su-form action="<%%= form_path(<% if namespace %>[:<%= controller_class_name.split('::').first.to_s.downcase %>, @<%= file_name %>]<% else %>@<%= file_name %><% end%>) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%%= form_method @<%= file_name %> %>">
+
+  <%%= form_validate @<%= file_name %> %>
+<%- attributes.each_with_index do |attribute, index| -%>
+    <%- name = "#{file_name}[#{attribute.name}]" -%>
+    <%- case attribute.type
+         when :date -%>
+      <su-input-datetime label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>' <%- if(index == 0) -%>autofocus<%- end -%>
+          name="<%= name %>" type="date" value="<%%= @<%= file_name %>.<%=attribute.name%> %>"></su-input-datetime>
+    <%- when :datetime -%>
+      <su-input-datetime label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>' <%- if(index == 0) -%>autofocus<%- end -%>
+          name="<%= name %>" value="<%%= @<%= file_name %>.<%=attribute.name%> %>"></su-input-datetime>
+    <%- when :text -%>
+      <su-text label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>' <%- if(index == 0) -%>autofocus<%- end -%>
+          name="<%= name %>"><%%= @<%= file_name %>.<%=attribute.name%> %></su-text>
+    <%- when :integer, :float, :decimal -%>
+      <su-input type="number" label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>' <%- if(index == 0) -%>autofocus<%- end -%>
+          name="<%= name %>" value="<%%= @<%= file_name %>.<%=attribute.name%> %>"></su-input>
+    <%- when :reference, :references -%>
+      <su-select label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>' <%- if(index == 0) -%>autofocus<%- end -%>
+          name="<%= "#{file_name}[#{attribute.name}_id]" %>" value="<%%= @<%= file_name %>.<%=attribute.name%>_id %>">
+        <%%# <%= attribute.name.capitalize%>.all.each do |item| %>
+            <!--<option value="<%%= item.id if item.present? %>"><%%= item.name if item.present? %></option>-->
+        <%%# end %>
+      </su-select>
+    <%- when :boolean -%>
+      <su-options type="checkbox" label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>'  name="<%= name %>" value="<%%= @<%= file_name %>.<%=attribute.name%> %>">
+        <su-option value="true" uncheck-value="false"></su-option>
+      </su-options>
+    <%- else -%>
+      <su-input type="text" label='<%%= t "activerecord.attributes.<%= file_name %>.<%=attribute.name%>" %>' <%- if(index == 0) -%>autofocus<%- end -%>
+          name="<%= name %>" value="<%%= @<%= file_name %>.<%=attribute.name%> %>"></su-input>
+    <%- end -%>
+<%- end -%>
+
+  <div class="clearfix form-actions">
+    <%%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>
+  </div>
+</su-form>

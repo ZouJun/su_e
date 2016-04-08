@@ -1,0 +1,16 @@
+<su-form action="<%= form_path([:admin, @grade]) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @grade %>">
+
+  <%= form_validate @grade %>
+      <su-input type="number" label='<%= t "activerecord.attributes.grade.score" %>' autofocus          name="grade[score]" value="<%= @grade.score %>"></su-input>
+      <su-options type="checkbox" label='<%= t "activerecord.attributes.grade.verify" %>'  name="grade[verify]" value="<%= @grade.verify %>">
+        <su-option value="true" uncheck-value="false"></su-option>
+      </su-options>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>
+  </div>
+</su-form>

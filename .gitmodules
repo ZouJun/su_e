@@ -1,0 +1,3 @@
+[submodule "vendor/assets/su-ui"]
+	path = vendor/assets/su-ui
+	url = https://git.oschina.net/s_u/su-ui.git

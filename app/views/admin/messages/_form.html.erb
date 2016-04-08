@@ -1,0 +1,22 @@
+<su-form action="<%= form_path([:admin, @message]) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @message %>">
+
+  <%= form_validate @message %>
+      <su-input type="text" label='<%= t "activerecord.attributes.message.m_title" %>' autofocus          name="message[m_title]" value="<%= @message.m_title %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.message.m_content" %>'           name="message[m_content]" value="<%= @message.m_content %>"></su-input>
+      <!--<su-input type="text" label='<%= t "activerecord.attributes.message.n_type" %>'           name="message[n_type]" value="<%= @message.n_type %>"></su-input>-->
+      <su-select name="message[n_type]" label="留言类型" value="<%= @message.n_type %>" no-blank="{只需要属性名,禁止空选项}">
+         <option value="<%= @message.n_type %>">情感</option>
+        <option value="<%= @message.n_type %>">武侠</option>
+        <option value="<%= @message.n_type %>">喜剧</option>
+        <option value="<%= @message.n_type %>">恐怖</option>
+      </su-select>
+      <su-input type="text" label='<%= t "activerecord.attributes.message.m_tags" %>'           name="message[m_tags]" value="<%= @message.m_tags %>"></su-input>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>
+  </div>
+</su-form>

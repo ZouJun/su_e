@@ -1,0 +1,13 @@
+<div class="su-ui">
+  <su-form>
+
+            <su-input type="number" label='<%= t "activerecord.attributes.grade.score" %>'
+            readonly value="<%= @grade.score %>"></su-input>
+            <su-options type="checkbox" label='<%= t "activerecord.attributes.grade.verify" %>' readonly value="<%= @grade.verify %>">
+              <su-option value="true"></su-option>
+            </su-options>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_grade_path, model: @grade} %>
+    </div>
+  </su-form>
+</div>
