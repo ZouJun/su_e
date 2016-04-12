@@ -19,7 +19,7 @@
  *= require ace/font-awesome.min
  *= require ace/bootstrap-datetimepicker.min
  *= require wice_grid
- *# require highlightjs/styles/github
+ *= require highlightjs/styles/github
  *= require_tree .
  *= require_self
  */

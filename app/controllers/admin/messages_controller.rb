@@ -30,6 +30,11 @@ class Admin::MessagesController < Admin::ApplicationController
   # POST /admin/messages
   def create
     @message = Message.new(message_params)
+    if current_user.teacher?
+     @message.teacher_id = current_user.id
+    elsif current_user.student?
+      @message.student_id = current_user.id
+    end
 
     respond_to do |format|
       if @message.save

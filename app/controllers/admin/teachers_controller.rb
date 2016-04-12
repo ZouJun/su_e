@@ -30,6 +30,7 @@ class Admin::TeachersController < Admin::ApplicationController
   # POST /admin/teachers
   def create
     @teacher = Teacher.new(teacher_params)
+    @teacher.user = User.create! name: @teacher.t_name, password: @teacher.t_password
 
     respond_to do |format|
       if @teacher.save

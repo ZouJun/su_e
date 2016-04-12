@@ -2,7 +2,9 @@
 class Admin::StudentsController < Admin::ApplicationController
   load_resource
   authorize_resource
+  # skip_load_and_authorize_resource :only => [:new, :create]
   #before_filter :set_student, only: [:show, :edit, :update, :destroy]
+  # skip_authorization_check :only => [:new, :create]
   before_filter :edit_check, only: [:edit, :update, :destroy]
   before_filter :base_breadcrumb
   before_filter :name_breadcrumb, only: [:show, :edit]
@@ -30,7 +32,8 @@ class Admin::StudentsController < Admin::ApplicationController
   # POST /admin/students
   def create
     @student = Student.new(student_params)
-
+    @student.user = User.create! name: @student.s_name, password: @student.s_passowrd
+    # authorize! :create, @student
     respond_to do |format|
       if @student.save
         format.html {

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, skip: [:registrations], controllers: {sessions: 'common/sessions'}
+  devise_for :users, controllers: {sessions: 'common/sessions'}
   # devise_for :users
   get 'home/index'
 
@@ -8,18 +8,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'front/home#index'
+  # root 'front/home#index'
+  root 'admin/dashboard#index'
   get 'guide' => 'front/home#guide'
 
-
-
-  namespace :front do
-
-  end
-
-  namespace :devise do
-    resources :registrations
-  end
+  # namespace :front do
+  # end
 
   namespace :admin do
     resources :students

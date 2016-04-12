@@ -3,7 +3,5 @@
   "dependencies": {
     "jquery": "latest",
     "highlightjs": "latest"
-  },
-  "resolutions": {
   }
 }

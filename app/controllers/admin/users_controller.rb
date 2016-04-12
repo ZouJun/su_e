@@ -2,6 +2,7 @@
 class Admin::UsersController < Admin::ApplicationController
   load_resource
   authorize_resource
+  # skip_load_and_authorize_resource :only => [:new, :create]
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :base_breadcrumb
   before_filter :name_breadcrumb, only: [:show, :edit]

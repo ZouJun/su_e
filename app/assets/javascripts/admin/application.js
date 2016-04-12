@@ -3,7 +3,7 @@
  */
 //= require jquery
 //= require jquery_ujs
-//# require highlightjs/highlight.pack.min
+//= require highlightjs/highlight.pack.min
 //= require ace/bootstrap.min
 //= require ace/ace.min
 //= require ace/ace-elements.min

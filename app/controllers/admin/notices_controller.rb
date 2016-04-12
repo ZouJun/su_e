@@ -30,6 +30,11 @@ class Admin::NoticesController < Admin::ApplicationController
   # POST /admin/notices
   def create
     @notice = Notice.new(notice_params)
+    if current_user.teacher?
+      @notice.teacher_id = current_user.id
+    elsif
+      @notice.admin_id = current_user.id
+    end
 
     respond_to do |format|
       if @notice.save

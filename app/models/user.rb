@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :teachers
-  has_many :students
   has_many :notices
   has_many :messages
   has_many :documents
@@ -13,10 +11,20 @@ class User < ActiveRecord::Base
   validates :phone, uniqueness: true, allow_blank: true, allow_nil: true
   validates :email, uniqueness: true, allow_nil: true, allow_blank: true
 
+  belongs_to :owner, polymorphic: true
+
   attr_accessor :login
   #角色
   has_and_belongs_to_many :roles, dependent: :delete_all
   has_many :permissions, through: :roles, class_name: 'Permission'
+
+  def teacher?
+    self.owner_type == 'Teacher'
+  end
+
+  def student?
+    self.owner_type == 'Student'
+  end
 
   def email_required?
     false

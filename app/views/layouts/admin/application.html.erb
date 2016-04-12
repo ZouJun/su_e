@@ -33,7 +33,7 @@
             <i class="ace-icon fa fa-caret-down"></i>
           </a>
           <ul class="user-menu dropdown-menu dropdown-menu-right dropdown-yellow dropdown-caret dropdown-close">
-            <li><a href="#"><i class="ace-icon fa fa-cog"></i> 修改密码</a></li>
+            <li><a href="<%= edit_user_password_path %>"><i class="ace-icon fa fa-cog"></i> 修改密码</a></li>
             <li><a href="#"><i class="fa fa-pencil fa-fw"></i> 修改信息</a></li>
             <li class="divider"></li>
             <li>
@@ -42,6 +42,7 @@
               <% end %>
             </li>
           </ul>
+
         </li>
       </ul>
     </div>
@@ -86,8 +87,9 @@
       <ul class="nav nav-list" slot="nav">
         <nav-item title="仪表盘" href="<%= admin_path %>" icon="dashboard"
                   active-pattern="<%= "^#{admin_path}$" %>"></nav-item>
+        <% if can? :read, User %>
+      <nav-item title="基础配置" href="#" icon="object-group" open>
 
-        <nav-item title="基础配置" href="#" icon="object-group" open>
 
           <% if can? :manage, User %>
               <nav-item title="人员管理" href="<%= admin_users_path %>" icon="user" %>
@@ -114,9 +116,12 @@
               </nav-item>
           <% end %>
         </nav-item>
+            <% end %>
         <nav-item title="公告管理" href="#" icon="info" %>
+          <% if can? :create, Notice %>
           <nav-item title="发布公告" href="<%= new_admin_notice_path %>" icon="user">
           </nav-item>
+              <% end %>
           <nav-item title="查看公告" href="<%= admin_notices_path %>" icon="user">
         </nav-item>
         </nav-item>
@@ -129,10 +134,14 @@
         <nav-item title="成绩管理" href="#" icon="gavel" %>
           <nav-item title="查看成绩" href="<%= admin_grades_path%>" icon="user">
           </nav-item>
-          <nav-item title="编辑成绩" href="<%= new_admin_grade_path %>" icon="user">
-          </nav-item>
+          <!--<% if can? :create, Grade %>-->
+          <!--<nav-item title="编辑成绩" href="<%= new_admin_grade_path %>" icon="user">-->
+          <!--</nav-item>-->
+          <!--<% end %>-->
+          <% if can? :create, Grade %>
           <nav-item title="录入成绩" href="#" icon="user">
           </nav-item>
+              <% end %>
         </nav-item>
         <nav-item title="文档管理" href="#" icon="file" %>
           <nav-item title="查看文档" href="<%= admin_documents_path %>" icon="file-text-o">
