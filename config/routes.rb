@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :reset_passwords
   devise_for :users, controllers: {sessions: 'common/sessions'}
   # devise_for :users
   get 'home/index'
@@ -11,12 +12,16 @@ Rails.application.routes.draw do
   # root 'front/home#index'
   root 'admin/dashboard#index'
   get 'guide' => 'front/home#guide'
-
+  get 'guide' => 'admin/students'
   # namespace :front do
   # end
 
   namespace :admin do
-    resources :students
+    resources :students do
+      collection do
+        post :import
+      end
+      end
     resources :teachers
     resources :notices
     resources :messages

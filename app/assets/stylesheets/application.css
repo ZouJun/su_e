@@ -23,6 +23,11 @@
  *= require_tree .
  *= require_self
  */
+
+.insert_student {
+    height: 30px;
+    width: 50px;
+}
 html.turbolinks-progress-bar::before {
     background-color: red !important;
     height: 5px !important;

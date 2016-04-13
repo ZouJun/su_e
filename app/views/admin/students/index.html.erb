@@ -2,7 +2,19 @@
   <p>
     <a href="<%= new_admin_student_path %>" class="btn btn-success btn-sm">
       <su-icon icon="plus" color="#fff" fix-width></su-icon>新增
-    </a>
+    </a>&nbsp;&nbsp;&nbsp
+    <!--<su-file label="<%= "导入学生信息" %>">-->
+      <!--<su-icon icon="plus" color="#fff" fix-width></su-icon>-->
+    <!--</su-file>-->
+        <!--<div class="btn btn-success btn-sm">-->
+    <%= form_tag import_admin_students_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <!--<a href="#" class="btn btn-success btn-sm">-->
+          <!--<su-icon icon="plus" color="#fff" fix-width></su-icon>-->
+          <%= submit_tag "导入学生信息" %>
+        <!--</a>-->
+    <% end %>
+          <!--</div>-->
   </p>
   <%= grid(@students, show_filters: :when_filtered) do |g|
     #g.action_column param_name: :select_ids, object_property: :id
@@ -18,7 +30,7 @@
             g.column name: "#{t 'activerecord.attributes.student.address'}", attribute: 'address'
             g.column name: "#{t 'activerecord.attributes.student.telephone'}", attribute: 'telephone'
             g.column name: "#{t 'activerecord.attributes.student.s_power'}", attribute: 's_power'
-            g.column name: "#{t 'activerecord.attributes.student.ip'}", attribute: 'ip'
+            # g.column name: "#{t 'activerecord.attributes.student.ip'}", attribute: 'ip'
 
     g.column do |c|
       grid_operator(:admin_student_path, c.id)

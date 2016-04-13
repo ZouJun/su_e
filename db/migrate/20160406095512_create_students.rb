@@ -3,7 +3,7 @@ class CreateStudents < ActiveRecord::Migration
     create_table :students do |t|
       t.string :s_number
       t.string :s_name
-      t.string :s_passowrd
+      t.string :s_password
       t.string :academy
       t.string :major
       t.integer :age
@@ -12,11 +12,9 @@ class CreateStudents < ActiveRecord::Migration
       t.string :address
       t.string :telephone
       t.integer :s_power
-      t.string :ip
-      t.integer :admin_id
+      t.attachment :info_file
+      t.integer :user_id
       t.integer :teacher_id
-      t.integer :message_id
-      t.integer :document_id
 
       t.timestamps null: false
     end

@@ -30,6 +30,11 @@ class Admin::DocumentsController < Admin::ApplicationController
   # POST /admin/documents
   def create
     @document = Document.new(document_params)
+    if current_user.teacher?
+      @document.teacher_id = current_user.id
+    elsif current_user.student?
+      @document.student_id = current_user.id
+    end
 
     respond_to do |format|
       if @document.save

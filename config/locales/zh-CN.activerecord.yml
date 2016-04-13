@@ -167,6 +167,7 @@ zh-CN:
         position: 排序
         data_type: 附件类型
         avatar: 附件文件
+        file: "附件名称"
       code_table:
         admin_title: 码表管理
         name: 名称
@@ -280,6 +281,7 @@ zh-CN:
         d_type: "文档类型"
         d_tags: "文档标签"
         annex: "附件"
+        n_type: "文档类型"
   title:
       statistics:
         menu: 统计报表

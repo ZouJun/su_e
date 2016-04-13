@@ -13,11 +13,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :telephone
       t.integer :t_power
       t.string :ip
-      t.integer :admin_id
-      t.integer :student_id
-      t.integer :notice_id
-      t.integer :message_id
-      t.integer :document_id
+      t.integer :user_id
 
       t.timestamps null: false
     end

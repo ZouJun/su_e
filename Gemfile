@@ -33,7 +33,7 @@ gem 'kaminari'
 gem 'paranoid2'
 # 跨域支持
 gem 'rack-cors', require: 'rack/cors'
-
+gem "paperclip", "~> 5.0.0.beta1"
 # api支持
 gem 'grape'
 gem 'grape-entity'
@@ -77,3 +77,4 @@ gem "wice_grid", '3.6.0.pre4'
 # 部署应用
 gem 'mina'
 
+gem 'string_utf8', require: 'string/utf8'

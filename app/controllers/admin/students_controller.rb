@@ -9,6 +9,14 @@ class Admin::StudentsController < Admin::ApplicationController
   before_filter :base_breadcrumb
   before_filter :name_breadcrumb, only: [:show, :edit]
 
+  def import
+    Student.import(params[:file])
+    respond_to do |format|
+        format.html { redirect_to admin_students_path, notice: create_success_notice(:student) }
+        format.json { render :show, status: :created, location: @student }
+    end
+  end
+
   # GET /admin/students
   def index
     add_breadcrumb t('common.list'), request.path
@@ -54,22 +62,23 @@ class Admin::StudentsController < Admin::ApplicationController
 
   # PATCH/PUT /admin/students/1
   def update
-    respond_to do |format|
-      if @student.update_attributes(student_params)
-         format.html {
-           if(!params[:submit_continue].nil?)
-             # 表示继续
-             redirect_to new_admin_student_path(), notice: update_success_notice(:survey_form)
-         else
-           redirect_to admin_student_path(@student.id), notice: update_success_notice(:student)
-           end
-         }
-        format.json { head :no_content }
-     else
-        format.html { render :edit }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
-    end
+
+    # respond_to do |format|
+    #   if @student.update_attributes(student_params)
+    #      format.html {
+    #        if(!params[:submit_continue].nil?)
+    #          # 表示继续
+    #          redirect_to new_admin_student_path(), notice: update_success_notice(:survey_form)
+    #      else
+    #        redirect_to admin_student_path(@student.id), notice: update_success_notice(:student)
+    #        end
+    #      }
+    #     format.json { head :no_content }
+    #  else
+    #     format.html { render :edit }
+    #     format.json { render json: @student.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
 
@@ -115,7 +124,7 @@ class Admin::StudentsController < Admin::ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def student_params
-    params.require(:student).permit(:s_number, :s_name, :s_passowrd, :academy, :major, :age, :sex, :email, :address, :telephone, :s_power, :ip)
+    params.require(:student).permit(:s_number, :s_name, :s_passowrd, :academy, :major, :age, :sex, :email, :address, :telephone, :s_power, :info_file)
   end
 
   def base_breadcrumb

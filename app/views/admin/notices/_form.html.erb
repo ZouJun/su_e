@@ -6,11 +6,17 @@
 
   <%= form_validate @notice %>
       <su-input type="text" label='<%= t "activerecord.attributes.notice.n_title" %>' autofocus          name="notice[n_title]" value="<%= @notice.n_title %>"></su-input>
-      <su-input type="text" label='<%= t "activerecord.attributes.notice.n_content" %>'           name="notice[n_content]" value="<%= @notice.n_content %>"></su-input>
-      <su-input type="text" label='<%= t "activerecord.attributes.notice.unit" %>'           name="notice[unit]" value="<%= @notice.unit %>"></su-input>
-      <su-input type="text" label='<%= t "activerecord.attributes.notice.n_type" %>'           name="notice[n_type]" value="<%= @notice.n_type %>"></su-input>
+      <su-text type="text" label='<%= t "activerecord.attributes.notice.n_content" %>'           name="notice[n_content]" value="<%= @notice.n_content %>"></su-text>
+      <!--<su-input type="text" label='<%= t "activerecord.attributes.notice.unit" %>'           name="notice[unit]" value="<%= @notice.unit %>"></su-input>-->
+      <!--<su-input type="text" label='<%= t "activerecord.attributes.notice.n_type" %>'           name="notice[n_type]" value="<%= @notice.n_type %>"></su-input>-->
+      <su-select name="notice[n_type]" label='<%= t "activerecord.attributes.document.n_type" %>' value="<%= @notice.n_type %>" no-blank="{只需要属性名,禁止空选项}">
+        <option value="情感">情感</option>
+        <option value="武侠">武侠</option>
+        <option value="喜剧">喜剧</option>
+        <option value="恐怖">恐怖</option>
+      </su-select>
       <su-input type="text" label='<%= t "activerecord.attributes.notice.n_tags" %>'           name="notice[n_tags]" value="<%= @notice.n_tags %>"></su-input>
-      <su-input type="number" label='<%= t "activerecord.attributes.notice.views" %>'           name="notice[views]" value="<%= @notice.views %>"></su-input>
+      <!--<su-input type="number" label='<%= t "activerecord.attributes.notice.views" %>'           name="notice[views]" value="<%= @notice.views %>"></su-input>-->
 
   <div class="clearfix form-actions">
     <%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>

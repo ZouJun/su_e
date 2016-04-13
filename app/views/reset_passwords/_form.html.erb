@@ -1,0 +1,12 @@
+<su-form action="<%= form_path(@reset_password) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @reset_password %>">
+
+  <%= form_validate @reset_password %>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>
+  </div>
+</su-form>

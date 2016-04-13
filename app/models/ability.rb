@@ -9,6 +9,7 @@ class Ability
       can :read, :all
       can :create, Notice
       can :create, Message
+      can :create, Document
       # can :create, Grade
       can :update, :all
         #   Student do |m|
@@ -18,7 +19,8 @@ class Ability
       can :read, :all
       can :create, Message
       can :create, Student
-      can :update, :all
+      can :create, Document
+      # can :update, :all
     end
 
 

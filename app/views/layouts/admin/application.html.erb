@@ -87,7 +87,7 @@
       <ul class="nav nav-list" slot="nav">
         <nav-item title="仪表盘" href="<%= admin_path %>" icon="dashboard"
                   active-pattern="<%= "^#{admin_path}$" %>"></nav-item>
-        <% if can? :read, User %>
+        <% if can? :manage, User %>
       <nav-item title="基础配置" href="#" icon="object-group" open>
 
 
@@ -139,18 +139,18 @@
           <!--</nav-item>-->
           <!--<% end %>-->
           <% if can? :create, Grade %>
-          <nav-item title="录入成绩" href="#" icon="user">
+          <nav-item title="录入成绩" href="<%= new_admin_grade_path %>" icon="user">
           </nav-item>
               <% end %>
         </nav-item>
         <nav-item title="文档管理" href="#" icon="file" %>
           <nav-item title="查看文档" href="<%= admin_documents_path %>" icon="file-text-o">
           </nav-item>
-          <nav-item title="上传文档" href="#" icon="user">
+          <nav-item title="上传文档" href="<%= new_admin_document_path %>" icon="user">
           </nav-item>
-          <nav-item title="编辑文档" href="#" icon="user">
-        </nav-item>
-          <nav-item title="下载文档" href="#" icon="user">
+          <!--<nav-item title="编辑文档" href="#" icon="user">-->
+        <!--</nav-item>-->
+          <nav-item title="下载文档" href="<%= admin_documents_path %>" icon="user">
           </nav-item>
         </nav-item>
         <% if Rails.env == 'development' %>

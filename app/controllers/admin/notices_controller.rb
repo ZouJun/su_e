@@ -32,8 +32,10 @@ class Admin::NoticesController < Admin::ApplicationController
     @notice = Notice.new(notice_params)
     if current_user.teacher?
       @notice.teacher_id = current_user.id
+      @notice.unit = current_user.name
     elsif
-      @notice.admin_id = current_user.id
+      @notice.user_id = current_user.id
+      @notice.unit = current_user.name
     end
 
     respond_to do |format|
@@ -117,7 +119,7 @@ class Admin::NoticesController < Admin::ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def notice_params
-    params.require(:notice).permit(:n_title, :n_content, :unit, :n_type, :n_tags, :views)
+    params.require(:notice).permit(:n_title, :n_content, :n_type, :n_tags, :views)
   end
 
   def base_breadcrumb

@@ -13,8 +13,10 @@
             readonly value="<%= @notice.n_tags %>"></su-input>
             <su-input type="number" label='<%= t "activerecord.attributes.notice.views" %>'
             readonly value="<%= @notice.views %>"></su-input>
-    <div class="clearfix form-actions">
-      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_notice_path, model: @notice} %>
-    </div>
+            <% if can? :update, Notice %>
+            <div class="clearfix form-actions">
+             <%= render partial: 'shared/form/show_actions', locals: {path: :admin_notice_path, model: @notice} %>
+            </div>
+          <% end %>
   </su-form>
 </div>

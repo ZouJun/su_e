@@ -1,9 +1,9 @@
 <div id="admin_notices">
-  <p>
-    <a href="<%= new_admin_notice_path %>" class="btn btn-success btn-sm">
-      <su-icon icon="plus" color="#fff" fix-width></su-icon>新增
-    </a>
-  </p>
+  <!--<p>-->
+    <!--<a href="<%= new_admin_notice_path %>" class="btn btn-success btn-sm">-->
+      <!--<su-icon icon="plus" color="#fff" fix-width></su-icon>新增-->
+    <!--</a>-->
+  <!--</p>-->
   <%= grid(@notices, show_filters: :when_filtered) do |g|
     #g.action_column param_name: :select_ids, object_property: :id
     g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true

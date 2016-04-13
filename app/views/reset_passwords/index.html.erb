@@ -1,0 +1,20 @@
+<div id="reset_passwords">
+  <p>
+    <a href="<%= new_reset_password_path %>" class="btn btn-success btn-sm">
+      <su-icon icon="plus" color="#fff" fix-width></su-icon>新增
+    </a>
+  </p>
+  <%= grid(@reset_passwords, show_filters: :when_filtered) do |g|
+    #g.action_column param_name: :select_ids, object_property: :id
+    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
+
+    g.column do |c|
+      grid_operator(:reset_password_path, c.id)
+    end
+  end %>
+</div>
+<script type="text/javascript" data-turbolinks-eval="true">
+  new Vue({
+    el: "#reset_passwords"
+  })
+</script>

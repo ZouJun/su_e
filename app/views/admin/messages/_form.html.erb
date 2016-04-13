@@ -9,10 +9,10 @@
       <su-input type="text" label='<%= t "activerecord.attributes.message.m_content" %>'           name="message[m_content]" value="<%= @message.m_content %>"></su-input>
       <!--<su-input type="text" label='<%= t "activerecord.attributes.message.n_type" %>'           name="message[n_type]" value="<%= @message.n_type %>"></su-input>-->
       <su-select name="message[n_type]" label='<%= t "activerecord.attributes.message.n_type" %>' value="<%= @message.n_type %>" no-blank="{只需要属性名,禁止空选项}">
-         <option value="<%= @message.n_type %>">情感</option>
-        <option value="<%= @message.n_type %>">武侠</option>
-        <option value="<%= @message.n_type %>">喜剧</option>
-        <option value="<%= @message.n_type %>">恐怖</option>
+         <option value="情感">情感</option>
+        <option value="武侠">武侠</option>
+        <option value="喜剧">喜剧</option>
+        <option value="恐怖">恐怖</option>
       </su-select>
       <su-input type="text" label='<%= t "activerecord.attributes.message.m_tags" %>'           name="message[m_tags]" value="<%= @message.m_tags %>"></su-input>
 
