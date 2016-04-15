@@ -7,6 +7,16 @@ class Admin::DocumentsController < Admin::ApplicationController
   before_filter :base_breadcrumb
   before_filter :name_breadcrumb, only: [:show, :edit]
 
+
+  def download
+    @documents = Document.all
+
+    respond_to do |format|
+      format.html{render 'admin/documents/download'}
+
+    end
+  end
+
   # GET /admin/documents
   def index
     add_breadcrumb t('common.list'), request.path
@@ -34,6 +44,8 @@ class Admin::DocumentsController < Admin::ApplicationController
       @document.teacher_id = current_user.id
     elsif current_user.student?
       @document.student_id = current_user.id
+    elsif
+      @document.user_id = current_user.id
     end
 
     respond_to do |format|

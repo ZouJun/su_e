@@ -19,7 +19,7 @@ class Ability
       can :read, :all
       can :create, Message
       can :create, Student
-      can :create, Document
+      can :manage, Document
       # can :update, :all
     end
 

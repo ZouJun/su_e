@@ -1,0 +1,28 @@
+<% if !flash[:notice].blank? %>
+    <div class = "alert alert-info">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<br />
+
+<table class = "table table-bordered table-striped">
+  <thead>.
+  <tr>
+    <th>文档名称</th>
+    <th>下载链接</th>
+    <th> </th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @documents.each do |document| %>
+
+      <tr>
+        <td><%= document.annex_file_name %></td>
+        <td><%= link_to "点击下载", document.annex.url %></td>
+      </tr>
+  <% end %>
+  </tbody>
+
+</table>

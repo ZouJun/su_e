@@ -26,7 +26,11 @@ Rails.application.routes.draw do
     resources :notices
     resources :messages
     resources :grades
-    resources :documents
+    resources :documents do
+      collection do
+        get :download
+      end
+    end
     get '/' => 'dashboard#index'
     get 'guide' => 'dashboard#guide'
     resources :users

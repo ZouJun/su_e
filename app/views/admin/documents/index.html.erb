@@ -12,15 +12,19 @@
             g.column name: "#{t 'activerecord.attributes.document.d_type'}", attribute: 'd_type'
             g.column name: "#{t 'activerecord.attributes.document.d_tags'}", attribute: 'd_tags'
             # g.column name: "#{t 'activerecord.attributes.document.annex'}", attribute: 'annex'
-            g.column name:  '上传人' do |documents|
-              documents.student_id || documents.user_id ||documents.teacher_id || '匿名'
+            g.column name:  '上传人' do |document|
+              uploader_render(document).html_safe?
              end
-             g.column name: '附件名称' do |documents|
-               documents.annex_file_name
+             g.column name: '附件名称' do |document|
+               document.annex_file_name
                end
-    # g.column do |c|
-    #   grid_operator(:admin_document_path, c.id)
-    # end
+            # g.column name: '下载链接' do |documents|
+            #   documents.annex.url
+            #   end
+              #
+              # <!--g.column do |c|-->
+              #    <!--grid_operator(:admin_document_path, c.id)-->
+              #     <!--end-->
   end %>
 </div>
 <script type="text/javascript" data-turbolinks-eval="true">

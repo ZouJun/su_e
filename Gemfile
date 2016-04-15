@@ -78,3 +78,4 @@ gem "wice_grid", '3.6.0.pre4'
 gem 'mina'
 
 gem 'string_utf8', require: 'string/utf8'
+gem 'carrierwave'
