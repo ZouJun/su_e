@@ -1,0 +1,17 @@
+<su-form action="<%= form_path([:admin, @practice]) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @practice %>">
+
+  <%= form_validate @practice %>
+      <su-input type="text" label='<%= t "activerecord.attributes.practice.p_name" %>' autofocus          name="practice[p_name]" value="<%= @practice.p_name %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.practice.post" %>'           name="practice[post]" value="<%= @practice.post %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.practice.address" %>'           name="practice[address]" value="<%= @practice.address %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.practice.telephone" %>'           name="practice[telephone]" value="<%= @practice.telephone %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.practice.memento" %>'           name="practice[memento]" value="<%= @practice.memento %>"></su-input>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>
+  </div>
+</su-form>

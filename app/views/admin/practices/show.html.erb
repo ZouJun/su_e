@@ -1,0 +1,18 @@
+<div class="su-ui">
+  <su-form>
+
+            <su-input type="text" label='<%= t "activerecord.attributes.practice.p_name" %>'
+            readonly value="<%= @practice.p_name %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.practice.post" %>'
+            readonly value="<%= @practice.post %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.practice.address" %>'
+            readonly value="<%= @practice.address %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.practice.telephone" %>'
+            readonly value="<%= @practice.telephone %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.practice.memento" %>'
+            readonly value="<%= @practice.memento %>"></su-input>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_practice_path, model: @practice} %>
+    </div>
+  </su-form>
+</div>

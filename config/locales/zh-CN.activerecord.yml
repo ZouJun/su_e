@@ -20,6 +20,7 @@ zh-CN:
       message: 留言
       grade: 成绩
       document: 文档
+      department: 系主任
     attributes:
       defaults:
         id: 编号
@@ -270,6 +271,7 @@ zh-CN:
         admin_title: "留言管理"
         n_type: "留言类型"
         m_tags: "留言标签"
+        m_type: "留言类型"
       grade:
         score: "成绩"
         admin_title: "成绩管理"
@@ -282,6 +284,19 @@ zh-CN:
         d_tags: "文档标签"
         annex: "附件"
         n_type: "文档类型"
+      department:
+        admin_title: "系主任管理"
+        email: "电子邮箱"
+        address: "地址"
+        telephone: "联系方式"
+        d_power: "权限等级"
+      practice:
+        admin_title: "实习单位管理"
+        p_name: "实习单位名称"
+        post: "实习岗位"
+        address: "实习地址"
+        telephone: "联系方式"
+        memento: "备注"
   title:
       statistics:
         menu: 统计报表

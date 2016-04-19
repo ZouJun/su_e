@@ -23,8 +23,18 @@ Rails.application.routes.draw do
       end
       end
     resources :teachers
-    resources :notices
-    resources :messages
+    resources :departments
+    resources :practices
+    resources :notices do
+      collection do
+        get "detail/:id" =>  'notices#detail', as: :admin_detail
+      end
+    end
+    resources :messages do
+      collection do
+        get "show/:id" =>  'messages#show', as: :admin_detail
+      end
+    end
     resources :grades
     resources :documents do
       collection do

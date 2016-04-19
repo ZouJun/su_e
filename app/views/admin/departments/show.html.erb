@@ -1,0 +1,30 @@
+<div class="su-ui">
+  <su-form>
+
+            <su-input type="text" label='<%= t "activerecord.attributes.department.d_number" %>'
+            readonly value="<%= @department.d_number %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.department.d_name" %>'
+            readonly value="<%= @department.d_name %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.department.d_password" %>'
+            readonly value="<%= @department.d_password %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.department.academy" %>'
+            readonly value="<%= @department.academy %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.department.major" %>'
+            readonly value="<%= @department.major %>"></su-input>
+            <su-input type="number" label='<%= t "activerecord.attributes.department.age" %>'
+            readonly value="<%= @department.age %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.department.sex" %>'
+            readonly value="<%= @department.sex %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.department.email" %>'
+            readonly value="<%= @department.email %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.department.address" %>'
+            readonly value="<%= @department.address %>"></su-input>
+            <su-input type="text" label='<%= t "activerecord.attributes.department.telephone" %>'
+            readonly value="<%= @department.telephone %>"></su-input>
+            <su-input type="number" label='<%= t "activerecord.attributes.department.d_power" %>'
+            readonly value="<%= @department.d_power %>"></su-input>
+    <div class="clearfix form-actions">
+      <%= render partial: 'shared/form/show_actions', locals: {path: :admin_department_path, model: @department} %>
+    </div>
+  </su-form>
+</div>

@@ -10,11 +10,13 @@ class Admin::MessagesController < Admin::ApplicationController
   # GET /admin/messages
   def index
     add_breadcrumb t('common.list'), request.path
-    @messages = initialize_grid(Message, page: params[:page], order: :created_at, order_direction: :desc)
+    # @messages = initialize_grid(Message, page: params[:page], order: :created_at, order_direction: :desc)
+    @messages = Message.all
   end
 
   # GET /admin/messages/1
   def show
+    @message = Message.find(params[:id])
   end
 
   # GET /admin/messages/new
@@ -117,7 +119,7 @@ class Admin::MessagesController < Admin::ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def message_params
-    params.require(:message).permit(:m_title, :m_content, :n_type, :m_tags)
+    params.require(:message).permit(:m_title, :m_content, :m_type, :m_tags)
   end
 
   def base_breadcrumb

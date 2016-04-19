@@ -20,7 +20,8 @@ class Admin::DocumentsController < Admin::ApplicationController
   # GET /admin/documents
   def index
     add_breadcrumb t('common.list'), request.path
-    @documents = initialize_grid(Document, page: params[:page], order: :created_at, order_direction: :desc)
+    # @documents = initialize_grid(Document, page: params[:page], order: :created_at, order_direction: :desc)
+    @documents = Document.all
   end
 
   # GET /admin/documents/1

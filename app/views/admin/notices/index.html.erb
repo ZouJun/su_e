@@ -4,23 +4,72 @@
       <!--<su-icon icon="plus" color="#fff" fix-width></su-icon>新增-->
     <!--</a>-->
   <!--</p>-->
-  <%= grid(@notices, show_filters: :when_filtered) do |g|
-    #g.action_column param_name: :select_ids, object_property: :id
-    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
-            g.column name: "#{t 'activerecord.attributes.notice.n_title'}", attribute: 'n_title'
-            g.column name: "#{t 'activerecord.attributes.notice.n_content'}", attribute: 'n_content'
-            g.column name: "#{t 'activerecord.attributes.notice.unit'}", attribute: 'unit'
-            g.column name: "#{t 'activerecord.attributes.notice.n_type'}", attribute: 'n_type'
-            g.column name: "#{t 'activerecord.attributes.notice.n_tags'}", attribute: 'n_tags'
-            g.column name: "#{t 'activerecord.attributes.notice.views'}", attribute: 'views'
 
-    g.column do |c|
-      grid_operator(:admin_notice_path, c.id)
-    end
-  end %>
+  <div id="up">
+  <div id="first_area">
+    <div id="area_type">
+      情感专区
+    </div>
+    <% @notices.where("n_type='情感'").paginate(:page => params[:page], :per_page => 1).each do |notice| %>
+    <div id="content_all">
+      <div id="content"><%= link_to notice.n_title[0,25], admin_detail_admin_notices_path(notice) %></div>
+      <div id="content_time"><%= notice.created_at.strftime('%Y-%m-%d') %></div>
+    </div>
+        <div id="paginate">
+          <%= will_paginate @notices.where("n_type='情感'").paginate(:page => params[:page], :per_page => 1) %>
+        </div>
+    <% end %>
+  </div>
+  <div id="second_area">
+    <div id="area_type">
+      武侠专区
+    </div>
+    <% @notices.where("n_type='武侠'").paginate(:page => params[:page], :per_page => 1).each do |notice| %>
+        <div id="content_all">
+          <div id="content"><%= link_to notice.n_title[0,25], admin_detail_admin_notices_path(notice) %></div>
+          <div id="content_time"><%= notice.created_at.strftime('%Y-%m-%d') %></div>
+        </div>
+        <div id="paginate">
+        <%= will_paginate @notices.where("n_type='武侠'").paginate(:page => params[:page], :per_page => 1) %>
+        </div>
+    <% end %>
+  </div>
 </div>
+
+<div id="down">
+  <div id="third_area">
+    <div id="area_type">
+      喜剧专区
+    </div>
+    <% @notices.where("n_type='喜剧'").paginate(:page => params[:page], :per_page => 1).each do |notice| %>
+        <div id="content_all">
+          <div id="content"><%= link_to notice.n_title[0,25], admin_detail_admin_notices_path(notice) %></div>
+          <div id="content_time"><%= notice.created_at.strftime('%Y-%m-%d') %></div>
+        </div>
+        <div id="paginate">
+          <%= will_paginate @notices.where("n_type='喜剧'").paginate(:page => params[:page], :per_page => 1) %>
+        </div>
+    <% end %>
+  </div>
+  <div id="fourth_area">
+    <div id="area_type">
+      恐怖专区
+    </div>
+    <% @notices.where("n_type='恐怖'").paginate(:page => params[:page], :per_page => 1).each do |notice| %>
+        <div id="content_all">
+          <div id="content"><%= link_to notice.n_title[0,25], admin_detail_admin_notices_path(notice) %></div>
+          <div id="content_time"><%= notice.created_at.strftime('%Y-%m-%d') %></div>
+        </div>
+        <div id="paginate">
+          <%= will_paginate @notices.where("n_type='恐怖'").paginate(:page => params[:page], :per_page => 1) %>
+        </div>
+    <% end %>
+  </div>
+  </div>
+
 <script type="text/javascript" data-turbolinks-eval="true">
   new Vue({
     el: "#admin_notices"
   })
 </script>
+  </div>

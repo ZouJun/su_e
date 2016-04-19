@@ -79,3 +79,6 @@ gem 'mina'
 
 gem 'string_utf8', require: 'string/utf8'
 gem 'carrierwave'
+
+#分页插件
+gem 'will_paginate', '~> 3.0.6'

@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :department
   belongs_to :teacher
   belongs_to :student
   # mount_uploader :attachment, AttachmentUploader

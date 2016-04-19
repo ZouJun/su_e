@@ -89,18 +89,22 @@
                   active-pattern="<%= "^#{admin_path}$" %>"></nav-item>
         <% if can? :manage, User %>
       <nav-item title="基础配置" href="#" icon="object-group" open>
-        <nav-item title="实习分配" href="<%= admin_teachers_path %>" icon="user">
-          <nav-item title="添加实习单位" href="<%= admin_teachers_path %>" icon="user">
+        <nav-item title="实习分配" href="<%= admin_practices_path %>" icon="user">
+          <nav-item title="添加实习单位" href="<%= admin_practices_path %>" icon="user">
           </nav-item>
-          <nav-item title="分配审核" href="<%= admin_teachers_path %>" icon="user">
+          <nav-item title="分配审核" href="<%= admin_practices_path %>" icon="user">
         </nav-item>
-          <nav-item title="分配查看" href="<%= admin_teachers_path %>" icon="user">
+          <nav-item title="分配查看" href="<%= admin_practices_path %>" icon="user">
           </nav-item>
         </nav-item>
 
           <% if can? :manage, User %>
               <nav-item title="人员管理" href="<%= admin_users_path %>" icon="user" %>
                 <!--<span class="badge badge-info" slot="badge">-->
+                <% if can? :read, Department %>
+                <nav-item title="系主任管理" href="<%= admin_departments_path %>" icon="user">
+                </nav-item>
+                    <% end %>
                   <nav-item title="教师管理" href="<%= admin_teachers_path %>" icon="user">
                   </nav-item>
                 <nav-item title="学生管理" href="<%= admin_students_path %>" icon="user">
@@ -157,8 +161,8 @@
           </nav-item>
           <!--<nav-item title="编辑文档" href="#" icon="user">-->
         <!--</nav-item>-->
-          <nav-item title="下载文档" href="<%= download_admin_documents_path %>" icon="user">
-          </nav-item>
+          <!--<nav-item title="下载文档" href="<%= download_admin_documents_path %>" icon="user">-->
+          <!--</nav-item>-->
         </nav-item>
         <% if Rails.env == 'development' %>
             <nav-item title="样式(开发环境可见)" href="<%= admin_guide_path %>" icon="desktop"></nav-item>

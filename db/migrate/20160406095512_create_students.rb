@@ -13,7 +13,6 @@ class CreateStudents < ActiveRecord::Migration
       t.string :telephone
       t.integer :s_power
       t.attachment :info_file
-      t.integer :user_id
       t.integer :teacher_id
 
       t.timestamps null: false

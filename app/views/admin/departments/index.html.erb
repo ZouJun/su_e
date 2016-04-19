@@ -1,0 +1,31 @@
+<div id="admin_departments">
+  <p>
+    <a href="<%= new_admin_department_path %>" class="btn btn-success btn-sm">
+      <su-icon icon="plus" color="#fff" fix-width></su-icon>新增
+    </a>
+  </p>
+  <%= grid(@departments, show_filters: :when_filtered) do |g|
+    #g.action_column param_name: :select_ids, object_property: :id
+    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
+            g.column name: "#{t 'activerecord.attributes.department.d_number'}", attribute: 'd_number'
+            g.column name: "#{t 'activerecord.attributes.department.d_name'}", attribute: 'd_name'
+            g.column name: "#{t 'activerecord.attributes.department.d_password'}", attribute: 'd_password'
+            g.column name: "#{t 'activerecord.attributes.department.academy'}", attribute: 'academy'
+            g.column name: "#{t 'activerecord.attributes.department.major'}", attribute: 'major'
+            g.column name: "#{t 'activerecord.attributes.department.age'}", attribute: 'age'
+            g.column name: "#{t 'activerecord.attributes.department.sex'}", attribute: 'sex'
+            g.column name: "#{t 'activerecord.attributes.department.email'}", attribute: 'email'
+            g.column name: "#{t 'activerecord.attributes.department.address'}", attribute: 'address'
+            g.column name: "#{t 'activerecord.attributes.department.telephone'}", attribute: 'telephone'
+            g.column name: "#{t 'activerecord.attributes.department.d_power'}", attribute: 'd_power'
+
+    g.column do |c|
+      grid_operator(:admin_department_path, c.id)
+    end
+  end %>
+</div>
+<script type="text/javascript" data-turbolinks-eval="true">
+  new Vue({
+    el: "#admin_departments"
+  })
+</script>

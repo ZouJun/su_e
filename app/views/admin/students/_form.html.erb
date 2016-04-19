@@ -7,7 +7,7 @@
   <%= form_validate @student %>
       <su-input type="text" label='<%= t "activerecord.attributes.student.s_number" %>' autofocus          name="student[s_number]" value="<%= @student.s_number %>"></su-input>
       <su-input type="text" label='<%= t "activerecord.attributes.student.s_name" %>'           name="student[s_name]" value="<%= @student.s_name %>"></su-input>
-      <su-input type="text" label='<%= t "activerecord.attributes.student.s_passowrd" %>'           name="student[s_passowrd]" value="<%= @student.s_passowrd %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.student.s_password" %>'           name="student[s_password]" value="<%= @student.s_password %>"></su-input>
       <su-input type="text" label='<%= t "activerecord.attributes.student.academy" %>'           name="student[academy]" value="<%= @student.academy %>"></su-input>
       <su-input type="text" label='<%= t "activerecord.attributes.student.major" %>'           name="student[major]" value="<%= @student.major %>"></su-input>
       <su-input type="number" label='<%= t "activerecord.attributes.student.age" %>'           name="student[age]" value="<%= @student.age %>"></su-input>
@@ -16,7 +16,6 @@
       <su-input type="text" label='<%= t "activerecord.attributes.student.address" %>'           name="student[address]" value="<%= @student.address %>"></su-input>
       <su-input type="text" label='<%= t "activerecord.attributes.student.telephone" %>'           name="student[telephone]" value="<%= @student.telephone %>"></su-input>
       <su-input type="number" label='<%= t "activerecord.attributes.student.s_power" %>'           name="student[s_power]" value="<%= @student.s_power %>"></su-input>
-       <su-file name="student[info_file]" label="<%= "导入学生信息" %>"></su-file>
   <div class="clearfix form-actions">
     <%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>
   </div>

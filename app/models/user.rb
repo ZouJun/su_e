@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     self.owner_type == 'Student'
   end
 
+  def department?
+    self.owner_type == 'Department'
+  end
+
   def email_required?
     false
   end

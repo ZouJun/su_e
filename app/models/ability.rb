@@ -7,11 +7,11 @@ class Ability
     if user.teacher?
       # alias_action :create, :read, :update, :to => :crud
       can :read, :all
-      can :create, Notice
+      can :manage, Notice
       can :create, Message
-      can :create, Document
+      can :manage, Document
       # can :create, Grade
-      can :update, :all
+      # can :update, :all
         #   Student do |m|
         # m.teacher.id == user.owner.id
       # end
@@ -21,6 +21,9 @@ class Ability
       can :create, Student
       can :manage, Document
       # can :update, :all
+    elsif user.department?
+      can :manage, :all
+      cannot :read, Department
     end
 
 

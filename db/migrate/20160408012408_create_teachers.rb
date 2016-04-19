@@ -12,8 +12,6 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :address
       t.string :telephone
       t.integer :t_power
-      t.string :ip
-      t.integer :user_id
 
       t.timestamps null: false
     end

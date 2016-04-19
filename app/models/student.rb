@@ -1,12 +1,15 @@
-
 class Student < ActiveRecord::Base
   belongs_to :teacher
   has_many :messages, :dependent => :destroy
   has_many :documents, :dependent => :destroy
   has_one :user, as: :owner
   has_one :grade
-  validates :s_number, uniqueness: true
-  validates :email, uniqueness: true
+
+  validates :s_number, uniqueness: true, presence: true, length: { is: 11}
+  validates :email, uniqueness: true, presence: true, format: { with: /.*/,
+                                                                message: "only allows letters" }
+  validates :s_power, numericality: { greater_than: 0, less_than: 2}
+  validates :s_name, :s_password, :academy, :major, :age, :sex, :address, :telephone, presence: true
 
   def self.import(file)
     csv = file.open

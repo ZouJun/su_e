@@ -1,0 +1,23 @@
+<su-form action="<%= form_path([:admin, @department]) %>"
+         method="post"
+         :init-fields="{authenticity_token: '<%= form_authenticity_token %>'}">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="<%= form_method @department %>">
+
+  <%= form_validate @department %>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.d_number" %>' autofocus          name="department[d_number]" value="<%= @department.d_number %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.d_name" %>'           name="department[d_name]" value="<%= @department.d_name %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.d_password" %>'           name="department[d_password]" value="<%= @department.d_password %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.academy" %>'           name="department[academy]" value="<%= @department.academy %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.major" %>'           name="department[major]" value="<%= @department.major %>"></su-input>
+      <su-input type="number" label='<%= t "activerecord.attributes.department.age" %>'           name="department[age]" value="<%= @department.age %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.sex" %>'           name="department[sex]" value="<%= @department.sex %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.email" %>'           name="department[email]" value="<%= @department.email %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.address" %>'           name="department[address]" value="<%= @department.address %>"></su-input>
+      <su-input type="text" label='<%= t "activerecord.attributes.department.telephone" %>'           name="department[telephone]" value="<%= @department.telephone %>"></su-input>
+      <su-input type="number" label='<%= t "activerecord.attributes.department.d_power" %>'           name="department[d_power]" value="<%= @department.d_power %>"></su-input>
+
+  <div class="clearfix form-actions">
+    <%= render partial: 'shared/form/new_actions', locals: {options: {do_continue: false}} %>
+  </div>
+</su-form>

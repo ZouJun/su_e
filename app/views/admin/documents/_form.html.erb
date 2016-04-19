@@ -6,7 +6,6 @@
 
   <%= form_validate @document %>
       <su-input type="text" label='<%= t "activerecord.attributes.document.d_title" %>' autofocus          name="document[d_title]" value="<%= @document.d_title %>"></su-input>
-      <su-input type="text" label='<%= t "activerecord.attributes.document.d_content" %>'           name="document[d_content]" value="<%= @document.d_content %>"></su-input>
       <!--<su-input type="text" label='<%= t "activerecord.attributes.document.d_type" %>'           name="document[d_type]" value="<%= @document.d_type %>"></su-input>-->
       <su-select name="document[d_type]" label='<%= t "activerecord.attributes.document.n_type" %>' value="<%= @document.d_type %>" no-blank="{只需要属性名,禁止空选项}">
        <option value="情感">情感</option>

@@ -1,0 +1,10 @@
+<div>标题: <%= @notice.n_title %></div>
+<% if @notice.user? %>
+    <div>发布单位:<%= @notice.user.name %></div>
+<% else %>
+    <div>发布单位:<%= @notice.department.name %></div>
+<% end %>
+<div>发布内容:<%= @notice.n_content %></div>
+<div>发布时间:<%= @notice.created_at.strftime('%Y-%m-%d %H:%M:%S') %></div>
+<div>通知标签:<%= @notice.n_tags %></div>
+<div>浏览次数:<%= @notice.views %></div>

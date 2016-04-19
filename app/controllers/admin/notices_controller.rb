@@ -7,10 +7,16 @@ class Admin::NoticesController < Admin::ApplicationController
   before_filter :base_breadcrumb
   before_filter :name_breadcrumb, only: [:show, :edit]
 
+  def detail
+      @notice = Notice.find(params[:id])
+  end
+
+
   # GET /admin/notices
   def index
     add_breadcrumb t('common.list'), request.path
-    @notices = initialize_grid(Notice, page: params[:page], order: :created_at, order_direction: :desc)
+    # @notices = initialize_grid(Notice, page: params[:page], order: :created_at, order_direction: :desc)
+    @notices = Notice.all
   end
 
   # GET /admin/notices/1
@@ -32,10 +38,10 @@ class Admin::NoticesController < Admin::ApplicationController
     @notice = Notice.new(notice_params)
     if current_user.teacher?
       @notice.teacher_id = current_user.id
-      @notice.unit = current_user.name
+      # @notice.unit = current_user.name
     elsif
-      @notice.user_id = current_user.id
-      @notice.unit = current_user.name
+      @notice.department_id = current_user.id
+      # @notice.unit = current_user.name
     end
 
     respond_to do |format|

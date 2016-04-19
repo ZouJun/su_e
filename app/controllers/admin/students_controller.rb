@@ -40,10 +40,10 @@ class Admin::StudentsController < Admin::ApplicationController
   # POST /admin/students
   def create
     @student = Student.new(student_params)
-    @student.user = User.create! name: @student.s_name, password: @student.s_passowrd
     # authorize! :create, @student
     respond_to do |format|
       if @student.save
+        @student.user = User.create! name: @student.s_name, password: @student.s_password
         format.html {
           if(!params[:submit_continue].nil?)
             # 表示继续
@@ -124,7 +124,7 @@ class Admin::StudentsController < Admin::ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def student_params
-    params.require(:student).permit(:s_number, :s_name, :s_passowrd, :academy, :major, :age, :sex, :email, :address, :telephone, :s_power, :info_file)
+    params.require(:student).permit(:s_number, :s_name, :s_password, :academy, :major, :age, :sex, :email, :address, :telephone, :s_power, :info_file)
   end
 
   def base_breadcrumb

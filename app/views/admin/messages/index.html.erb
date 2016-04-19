@@ -4,21 +4,39 @@
       <!--<su-icon icon="plus" color="#fff" fix-width></su-icon>新增-->
     <!--</a>-->
   <!--</p>-->
-  <%= grid(@messages, show_filters: :when_filtered) do |g|
-    #g.action_column param_name: :select_ids, object_property: :id
-    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
-            g.column name: "#{t 'activerecord.attributes.message.m_title'}", attribute: 'm_title'
-            g.column name: "#{t 'activerecord.attributes.message.m_content'}", attribute: 'm_content'
-            g.column name: "#{t 'activerecord.attributes.message.n_type'}", attribute: 'n_type'
-            g.column name: "#{t 'activerecord.attributes.message.m_tags'}", attribute: 'm_tags'
+<div id="message_body">
+  <div id="message_top">
+    <div id="message_type_a">类别</div>
+    <div id="message_title_a">标题</div>
+    <div id="message_time_a">留言时间</div>
+  </div>
+  <div id="message_middle">
+    <% @messages.each do |message| %>
+    <div id="message_type">
+    [<%= message.m_type %>]
+    </div>
+    <div id="message_title">
+    <%= link_to message.m_title, admin_detail_admin_messages_path(message)%>
+    </div>
+    <div id="message_time">
+    <%= message.created_at.strftime('%Y-%m-%d') %>
+    </div>
+    <% end %>
+  </div>
 
-    # g.column do |c|
-    #   grid_operator(:admin_message_path, c.id)
-    # end
-  end %>
+  <div id="message_paginate">
+
+  </div>
+  <div id="info">
+    Copyright 2015-2024 |	 重庆理工大学-计算机科学与工程学院	| 学院地址及联系方式<br/><br/>
+    网站管理维护制度 |	网站负责人联系方式	 | 互联网法律法规
+  </div>
+
 </div>
+
 <script type="text/javascript" data-turbolinks-eval="true">
   new Vue({
     el: "#admin_messages"
   })
 </script>
+</div>

@@ -6,7 +6,7 @@
             <su-input type="text" label='<%= t "activerecord.attributes.student.s_name" %>'
             readonly value="<%= @student.s_name %>"></su-input>
             <su-input type="text" label='<%= t "activerecord.attributes.student.s_passowrd" %>'
-            readonly value="<%= @student.s_passowrd %>"></su-input>
+            readonly value="<%= @student.s_password %>"></su-input>
             <su-input type="text" label='<%= t "activerecord.attributes.student.academy" %>'
             readonly value="<%= @student.academy %>"></su-input>
             <su-input type="text" label='<%= t "activerecord.attributes.student.major" %>'
@@ -23,8 +23,6 @@
             readonly value="<%= @student.telephone %>"></su-input>
             <su-input type="number" label='<%= t "activerecord.attributes.student.s_power" %>'
             readonly value="<%= @student.s_power %>"></su-input>
-            <!--<su-input type="text" label='<%= t "activerecord.attributes.student.ip" %>'-->
-            <!--readonly value="<%= @student.ip %>"></su-input>-->
     <div class="clearfix form-actions">
       <%= render partial: 'shared/form/show_actions', locals: {path: :admin_student_path, model: @student} %>
     </div>

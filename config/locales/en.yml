@@ -25,3 +25,7 @@ en:
     attributes:
       document:
         n_type: "公告类型"
+      student:
+        s_password: "登录密码"
+      department:
+        email: "电子邮箱"

@@ -4,31 +4,75 @@
       <!--<su-icon icon="plus" color="#fff" fix-width></su-icon>新增-->
     <!--</a>-->
   <!--</p>-->
-  <%= grid(@documents, show_filters: :when_filtered) do |g|
-    #g.action_column param_name: :select_ids, object_property: :id
-    g.column name: "<i class='fa fa-asterisk fa-fw'></i>#{t 'activerecord.attributes.defaults.id'}", attribute: 'id', filter: false, ordering: true
-            g.column name: "#{t 'activerecord.attributes.document.d_title'}", attribute: 'd_title'
-            g.column name: "#{t 'activerecord.attributes.document.d_content'}", attribute: 'd_content'
-            g.column name: "#{t 'activerecord.attributes.document.d_type'}", attribute: 'd_type'
-            g.column name: "#{t 'activerecord.attributes.document.d_tags'}", attribute: 'd_tags'
-            # g.column name: "#{t 'activerecord.attributes.document.annex'}", attribute: 'annex'
-            g.column name:  '上传人' do |document|
-              uploader_render(document).html_safe?
-             end
-             g.column name: '附件名称' do |document|
-               document.annex_file_name
-               end
-            # g.column name: '下载链接' do |documents|
-            #   documents.annex.url
-            #   end
-              #
-              # <!--g.column do |c|-->
-              #    <!--grid_operator(:admin_document_path, c.id)-->
-              #     <!--end-->
-  end %>
-</div>
+  <div id="up">
+    <div id="first_area">
+      <div id="area_type">
+        <a href="<%= download_admin_documents_path %>" >系主任专区</a>
+      </div>
+      <% @documents.each do |document| %>
+          <div id="content_all">
+            <div id="content"><%= link_to document.d_title[0,25] %></div>
+            <div id="content_time"><%= document.created_at.strftime('%Y-%m-%d') %></div>
+          </div>
+
+      <% end %>
+      <div id="paginate">
+
+      </div>
+    </div>
+    <div id="second_area">
+      <div id="area_type">
+       <a href="<%= download_admin_documents_path %>" >教师专区</a>
+      </div>
+      <% @documents.each do |document| %>
+          <div id="content_all">
+            <div id="content"><%= link_to document.d_title[0,25],document.annex.url %></div>
+            <div id="content_time"><%= document.created_at.strftime('%Y-%m-%d') %></div>
+          </div>
+
+      <% end %>
+      <div id="paginate">
+
+      </div>
+    </div>
+  </div>
+
+  <div id="down">
+    <div id="third_area">
+      <div id="area_type">
+        <a href="<%= download_admin_documents_path %>" >学生专区</a>
+      </div>
+      <% @documents.each do |document| %>
+          <div id="content_all">
+            <div id="content"><%= link_to document.d_title[0,25] %></div>
+            <div id="content_time"><%= document.created_at.strftime('%Y-%m-%d') %></div>
+          </div>
+
+      <% end %>
+      <div id="paginate">
+
+      </div>
+    </div>
+    <div id="fourth_area">
+      <div id="area_type">
+        <a href="<%= download_admin_documents_path %>" >实习单位专区</a>
+      </div>
+      <% @documents.each do |document| %>
+          <div id="content_all">
+            <div id="content"></div>
+            <div id="content_time"></div>
+          </div>
+
+      <% end %>
+      <div id="paginate">
+
+      </div>
+    </div>
+  </div>
+
 <script type="text/javascript" data-turbolinks-eval="true">
   new Vue({
     el: "#admin_documents"
   })
 </script>
+  </div>

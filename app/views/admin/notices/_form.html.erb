@@ -7,7 +7,6 @@
   <%= form_validate @notice %>
       <su-input type="text" label='<%= t "activerecord.attributes.notice.n_title" %>' autofocus          name="notice[n_title]" value="<%= @notice.n_title %>"></su-input>
       <su-text type="text" label='<%= t "activerecord.attributes.notice.n_content" %>'           name="notice[n_content]" value="<%= @notice.n_content %>"></su-text>
-      <!--<su-input type="text" label='<%= t "activerecord.attributes.notice.unit" %>'           name="notice[unit]" value="<%= @notice.unit %>"></su-input>-->
       <!--<su-input type="text" label='<%= t "activerecord.attributes.notice.n_type" %>'           name="notice[n_type]" value="<%= @notice.n_type %>"></su-input>-->
       <su-select name="notice[n_type]" label='<%= t "activerecord.attributes.document.n_type" %>' value="<%= @notice.n_type %>" no-blank="{只需要属性名,禁止空选项}">
         <option value="情感">情感</option>
@@ -15,7 +14,12 @@
         <option value="喜剧">喜剧</option>
         <option value="恐怖">恐怖</option>
       </su-select>
-      <su-input type="text" label='<%= t "activerecord.attributes.notice.n_tags" %>'           name="notice[n_tags]" value="<%= @notice.n_tags %>"></su-input>
+      <su-select multiple="multiple" label='<%= t "activerecord.attributes.notice.n_tags" %>'           name="notice[n_tags]" value="<%= @notice.n_tags %>">
+        <option value="科学">科学</option>
+        <option value="天才">天才</option>
+        <option value="明智">明智</option>
+        <option value="优美">优美</option>
+      </su-select>
       <!--<su-input type="number" label='<%= t "activerecord.attributes.notice.views" %>'           name="notice[views]" value="<%= @notice.views %>"></su-input>-->
 
   <div class="clearfix form-actions">

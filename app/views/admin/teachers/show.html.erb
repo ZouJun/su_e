@@ -23,8 +23,6 @@
             readonly value="<%= @teacher.telephone %>"></su-input>
             <su-input type="number" label='<%= t "activerecord.attributes.teacher.t_power" %>'
             readonly value="<%= @teacher.t_power %>"></su-input>
-            <su-input type="text" label='<%= t "activerecord.attributes.teacher.ip" %>'
-            readonly value="<%= @teacher.ip %>"></su-input>
     <div class="clearfix form-actions">
       <%= render partial: 'shared/form/show_actions', locals: {path: :admin_teacher_path, model: @teacher} %>
     </div>
